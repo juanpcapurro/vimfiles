@@ -1,0 +1,36 @@
+[submodule "./bundle/auto-pairs"]
+	path = ./bundle/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "./bundle/command-t"]
+	path = ./bundle/command-t
+	url = https://github.com/wincent/command-t.git
+[submodule "./bundle/gruvbox"]
+	path = ./bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "./bundle/nerdtree"]
+	path = ./bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "./bundle/tabular"]
+	path = ./bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "./bundle/vim-airline"]
+	path = ./bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "./bundle/vim-easygrep"]
+	path = ./bundle/vim-easygrep
+	url = https://github.com/dkprice/vim-easygrep.git
+[submodule "./bundle/vim-gutentags"]
+	path = ./bundle/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "./bundle/vim-repeat"]
+	path = ./bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "./bundle/vim-surround"]
+	path = ./bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "./bundle/YouCompleteMe"]
+	path = ./bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "./pack/default/start/vim-polyglot"]
+	path = ./pack/default/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
