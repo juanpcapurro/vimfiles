@@ -10,6 +10,7 @@ There are a few prerrequisites:
 * Neovim
 * Python
 * Ruby
+
 Regarding python and ruby, neovim's `:CheckHealth` is your friend. YCM won't work without python support and CommandT needs ruby.
 Installation of these varies between distros, and you'll have to add a few directories to your `$PATH`, but `:CheckHealth` can guide you through it better than I do.
 First of all, clone this repo, or add it as a submodule of your [main dotfiles repo](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/) if you're into that sort of thing.
