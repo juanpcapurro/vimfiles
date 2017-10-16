@@ -51,8 +51,6 @@ nnoremap <leader><space> :nohlsearch <CR>
 "Use of system clipboard
 set clipboard=unnamedplus
 
-let g:markdown_enable_folding = 1
-
 "specific commands by filetype
 augroup cfggroup
     autocmd!
@@ -131,9 +129,8 @@ iabbrev ssig <cr>---<cr>Saludos, Juan Pablo.
 autocmd VimEnter * echo ">^.^<"
 
 "Markdown goodness
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-let g:markdown_mapping_switch_status = '<leader>cm'
-let g:markdown_enable_spell_checking = 0
+let g:instant_markdown_autostart = 0
+let g:markdown_folding = 1
 
 "Terminal mode
 :tnoremap <Esc> <C-\><C-n>

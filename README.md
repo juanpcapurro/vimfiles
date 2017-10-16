@@ -2,9 +2,6 @@
 
 I have spent a fair amount of time customizing my editor, and I think these are pretty sane defaults for other people to use
 
-## What's my workflow like
-So far, i don't use n
-
 ## Installation:
 There are a few prerrequisites:
 * Neovim
@@ -37,6 +34,9 @@ This is of course very well documented in the official repo.
 A word of caution for Arch users: I had to add the `--system-libclang` parameter to make it work.
 Also, a pip module called `certifi` was needed. I have no idea what it does.
 
+## Mappings worth mentioning
+* Navigation is visual, and soft wrapping is enabled.
+* `J` and `K` scroll 5 lines 
 ## Featured plugins
 
 #### [YCM](https://github.com/Valloric/YouCompleteMe)
@@ -64,6 +64,11 @@ Find and replace with regular expressions,
 Generates tags automatically for the current proyect, so you can, for example, use `ctrl-]` to go to the definition of a function.
 #### [vim-polyglot](https://github.com/sheerun/vim-polyglot)
 Syntax highlight for several languages
+#### [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
+Opens a new chrome tab which displays the current markdown file, updating it in real time. It requires `instant-markdown-d` npm package installed globally.
+Use `:InstantMarkdownPreview` to launch it.
+#### [vim-auto-save](https://github.com/vim-scripts/vim-auto-save)
+Automatically saves files
 
 ## TODO
 * Spell checking for markdown files
