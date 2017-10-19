@@ -14,6 +14,7 @@ set numberwidth=1
 set foldmethod=syntax
 set foldlevelstart=0
 set mouse=a
+set noswapfile
 syntax on 
 colorscheme gruvbox
 filetype indent on
@@ -90,6 +91,7 @@ set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,.pdf
 "disable smart goto-or-open when opening in current window
 let g:CommandTAcceptSelectionCommand='e'
 let g:CommandTAcceptSelectionSplitCommand='split'
+let g:CommandTAcceptSelectionVSplitCommand='vs'
 
 nnoremap <leader>l :CommandTLine<cr>
 nnoremap <leader>m :CommandTMRU<cr>
