@@ -84,6 +84,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 nnoremap tt :tab split <CR>
+nnoremap Q :q<CR>
 
 "CommandT
 set switchbuf=usetab
