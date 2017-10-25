@@ -29,6 +29,7 @@ set wildmenu
 let g:gruvbox_contrast_dark="hard"
 let g:airline#extensions#tabline#enabled = 1
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
 set incsearch
 set ignorecase
 set smartcase
@@ -85,6 +86,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
+set splitbelow
 
 "CommandT
 set switchbuf=usetab
