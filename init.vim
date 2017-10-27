@@ -72,10 +72,8 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-vnoremap J 5jzz
-nnoremap J 5jzz
-vnoremap K 5kzz
-nnoremap K 5kzz
+nnoremap J gt
+nnoremap K gT
 
 nnoremap gV `[v`]
 

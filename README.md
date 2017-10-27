@@ -36,7 +36,7 @@ Also, a pip module called `certifi` was needed. I have no idea what it does.
 
 ## Mappings worth mentioning
 * Navigation is visual, and soft wrapping is enabled.
-* `J` and `K` scroll 5 lines 
+* `J` and `K` change tabs
 ## Featured plugins
 
 #### [YCM](https://github.com/Valloric/YouCompleteMe)
