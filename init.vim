@@ -1,8 +1,23 @@
 "set runtimepath^=~/.vim runtimepath+=~/.vim/after
 "let &packpath = &runtimepath
 "Capurro's vimrc
-execute pathogen#infect()
-call pathogen#helptags()
+set nocompatible
+filetype off
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'wincent/command-t'
+Plugin 'morhetz/gruvbox'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'vim-airline/vim-airline'
+Plugin 'dkprice/vim-easygrep'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'sheerun/vim-polyglot'
 
 let mapleader = ";"
 let localleader = ";"
