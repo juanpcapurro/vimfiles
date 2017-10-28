@@ -1,23 +1,23 @@
-"set runtimepath^=~/.vim runtimepath+=~/.vim/after
-"let &packpath = &runtimepath
 "Capurro's vimrc
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'wincent/command-t'
-Plugin 'morhetz/gruvbox'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
-Plugin 'vim-airline/vim-airline'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'sheerun/vim-polyglot'
+" Load vim-plug
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+call plug#begin()
+Plug 'VundleVim/Vundle.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'wincent/command-t'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'vim-airline/vim-airline'
+Plug 'dkprice/vim-easygrep'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
+call plug#end()
 
 let mapleader = ";"
 let localleader = ";"
