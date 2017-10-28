@@ -1,12 +1,12 @@
 "Capurro's vimrc
 " Load vim-plug
-if empty(glob("~/.config/nvim/autoload/plug.vim"))
+if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
     execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'wincent/command-t'
+Plug 'wincent/command-t',{'do': 'cd ruby/command-t/ext/command-t; make clean; ruby extconf.rb && make'}
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
@@ -17,6 +17,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'Valloric/YouCompleteMe',{'do': './install.py' }
 call plug#end()
 
 let mapleader = ";"
@@ -30,6 +32,7 @@ set foldmethod=syntax
 set foldlevelstart=0
 set mouse=a
 set noswapfile
+set omnifunc=syntaxcomplete#Complete
 syntax on 
 colorscheme gruvbox
 filetype indent on
