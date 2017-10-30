@@ -5,38 +5,30 @@ I have spent a fair amount of time customizing my editor, and I think these are 
 ## Installation:
 There are a few prerrequisites:
 * Neovim
-* Python
-* Ruby
+* Python (including `neovim` package)
+* Ruby (including `neovim` gem, and the gem's bin directory must be in `$PATH`)
+* Git
 
 Regarding python and ruby, neovim's `:CheckHealth` is your friend. YCM won't work without python support and CommandT needs ruby.
 Installation of these varies between distros, and you'll have to add a few directories to your `$PATH`, but `:CheckHealth` can guide you through it better than I do.
 First of all, clone this repo, or add it as a submodule of your [main dotfiles repo](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/) if you're into that sort of thing.
 ```
 git clone https://github.com/juanpcapurro/vimfiles.git ~/.config/nvim
-cd ~/.config/nvim
-git submoudle update --init --recursive
 ```
-Then, two plugins, YCM and CommandT, have a compiled component. 
-#### Command-T
-```
-cd ~/.config/nvim/bundle/command-t/ruby/command-t/ext/command-t
-ruby extconf.rb
-make
-```
-#### YCM
-Install with support for C-family languages only:
-```
-cd ~/.config/nvim/bundle/YouCompleteMe
-./install.py --clang-completer
-```
-YCM supports other languages as well, and as an example, I use `--js-completer` to add javascript semantic support.
-This is of course very well documented in the official repo.
+Then, open `nvim` (the first time it'll curl for Plug)and run `:PlugInstall`.
+Most of the plugins are hassle-free, but YCM and Command-T have a compiled component.
+Compilation of those might fail if you miss a dependency
 A word of caution for Arch users: I had to add the `--system-libclang` parameter to make it work.
 Also, a pip module called `certifi` was needed. I have no idea what it does.
 
-## Mappings worth mentioning
-* Navigation is visual, and soft wrapping is enabled.
+## Mappings and commands worth mentioning
 * `J` and `K` change tabs
+* `;t` opens CommandT and lets you search for files in the current proyect.
+* `;m` opens CommandT, but searchs accross recently opened files.
+Other mappings are `;l` (searchs for matches in lines of the current buffer, barely used since I find `/` more comfortable) and `;j`, which lets you search accross the files present in vim's _jumplist_. I'll soon explain what the jumplist is and how to use it.
+* `;vv` greps for the word under the cursor, `;vV` greps for the WORD under the cursor instead
+## Settings worth mentioning
+* Navigation is visual, and soft wrapping is enabled.
 ## Featured plugins
 
 #### [YCM](https://github.com/Valloric/YouCompleteMe)
@@ -64,7 +56,7 @@ Find and replace with regular expressions,
 Generates tags automatically for the current proyect, so you can, for example, use `ctrl-]` to go to the definition of a function.
 #### [vim-polyglot](https://github.com/sheerun/vim-polyglot)
 Syntax highlight for several languages
-#### [vim-instant-markdown](https://github.com/suan/vim-instant-markdown)
+#### [vim-instant-markdown](https://github.com/suan/vim-instant-markdownvim-instant-markdown)
 Opens a new chrome tab which displays the current markdown file, updating it in real time. It requires `instant-markdown-d` npm package installed globally.
 Use `:InstantMarkdownPreview` to launch it.
 #### [vim-auto-save](https://github.com/vim-scripts/vim-auto-save)
@@ -74,5 +66,4 @@ Automatically saves files
 * Spell checking for markdown files
 * Filetype-specific mappings, specially for LaTeX.
 * Improve autocomplete, so it suggests struct members when applicable, and lists the parameters that a function recieves when typing them.
-
 

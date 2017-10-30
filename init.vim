@@ -13,6 +13,7 @@ Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'dkprice/vim-easygrep'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
@@ -21,9 +22,40 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'Valloric/YouCompleteMe',{'do': './install.py' }
 call plug#end()
 
+"CommandT
+set switchbuf=usetab
+set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged
+let g:CommandTFileScanner='git'
+let g:CommandTAcceptSelectionCommand='e'
+let g:CommandTAcceptSelectionSplitCommand='split'
+let g:CommandTAcceptSelectionVSplitCommand='vs'
+let g:CommandTSCMDirectories='.git,.hg,.svn,.bzr,_darcs,.vimproject'
+
+"YCM
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"vim-gutengags
+let g:gutentags_project_root=['.git','.vimproject']
+set statusline+=%{gutentags#statusline()}
+
+"EasyGrep
+let g:EasyGrepMode=2
+let g:EasyGrepCommand=0
+let g:EasyGrepRecursive=1
+let g:EasyGrepIgnoreCase=1
+
+"other plugins
+let g:gruvbox_contrast_dark="hard"
+let g:airline#extensions#tabline#enabled = 1
+let g:auto_save = 1
+let g:livepreview_previewer = 'zathura'
+let g:instant_markdown_autostart = 0
+let g:markdown_folding = 1
+cnoreabbrev tab Tabularize /
+
 let mapleader = ";"
 let localleader = ";"
-
 set wrap lbr
 set relativenumber
 set number
@@ -44,19 +76,13 @@ au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * :checktime
 
 set wildmenu
-let g:gruvbox_contrast_dark="hard"
-let g:airline#extensions#tabline#enabled = 1
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_insertion = 1
 set incsearch
 set ignorecase
 set smartcase
 set hlsearch
 set background=dark
 set cursorline
-let g:auto_save = 1
 set autowriteall
-let g:livepreview_previewer = 'zathura'
 
 "Indenting
 set autoindent
@@ -104,13 +130,6 @@ nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
 set splitbelow
 
-"CommandT
-set switchbuf=usetab
-set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,.pdf
-"disable smart goto-or-open when opening in current window
-let g:CommandTAcceptSelectionCommand='e'
-let g:CommandTAcceptSelectionSplitCommand='split'
-let g:CommandTAcceptSelectionVSplitCommand='vs'
 
 nnoremap <leader>l :CommandTLine<cr>
 nnoremap <leader>m :CommandTMRU<cr>
@@ -129,16 +148,7 @@ nnoremap <leader>f :NERDTreeToggle<cr>
 inoremap jk <esc>
 nnoremap <space> za
 
-"EasyGrep
-let g:EasyGrepMode=2
-let g:EasyGrepCommand=0
-let g:EasyGrepRecursive=1
-let g:EasyGrepIgnoreCase=1
-
 cnoreabbrev mks mksession!
-
-"Tabularize
-cnoreabbrev tab Tabularize /
 
 noremap <up> <nop>
 noremap <down> <nop>
@@ -148,10 +158,6 @@ noremap <right> <nop>
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo.
 
 autocmd VimEnter * echo ">^.^<"
-
-"Markdown goodness
-let g:instant_markdown_autostart = 0
-let g:markdown_folding = 1
 
 "Terminal mode
 :tnoremap <Esc> <C-\><C-n>
