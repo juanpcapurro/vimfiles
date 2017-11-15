@@ -5,13 +5,13 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'wincent/command-t',{'do': 'cd ruby/command-t/ext/command-t; make clean; ruby extconf.rb && make'}
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
-Plug 'dkprice/vim-easygrep'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
 Plug 'tpope/vim-repeat'
@@ -19,7 +19,6 @@ Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/vim-auto-save'
-Plug 'Valloric/YouCompleteMe',{'do': './install.py' }
 call plug#end()
 
 "CommandT
@@ -31,19 +30,9 @@ let g:CommandTAcceptSelectionSplitCommand='split'
 let g:CommandTAcceptSelectionVSplitCommand='vs'
 let g:CommandTSCMDirectories='.git,.hg,.svn,.bzr,_darcs,.vimproject'
 
-"YCM
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
 "vim-gutengags
 let g:gutentags_project_root=['.git','.vimproject']
 set statusline+=%{gutentags#statusline()}
-
-"EasyGrep
-let g:EasyGrepMode=2
-let g:EasyGrepCommand=0
-let g:EasyGrepRecursive=1
-let g:EasyGrepIgnoreCase=1
 
 "other plugins
 let g:gruvbox_contrast_dark="hard"
@@ -57,6 +46,7 @@ cnoreabbrev tab Tabularize /
 let mapleader = ";"
 let localleader = ";"
 set wrap lbr
+set lazyredraw
 set relativenumber
 set number
 set numberwidth=1
@@ -64,7 +54,6 @@ set foldmethod=syntax
 set foldlevelstart=0
 set mouse=a
 set noswapfile
-set omnifunc=syntaxcomplete#Complete
 syntax on 
 colorscheme gruvbox
 filetype indent on
