@@ -29,6 +29,7 @@ let g:CommandTFileScanner='git'
 let g:CommandTAcceptSelectionCommand='e'
 let g:CommandTAcceptSelectionSplitCommand='split'
 let g:CommandTAcceptSelectionVSplitCommand='vs'
+let g:CommandTAcceptSelectionTabCommand='tabnew'
 let g:CommandTSCMDirectories='.git,.hg,.svn,.bzr,_darcs,.vimproject'
 
 "YCM
