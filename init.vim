@@ -5,12 +5,15 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
+Plug 'dkprice/vim-easygrep'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-unimpaired'
 Plug 'wincent/command-t',{'do': 'cd ruby/command-t/ext/command-t; make clean; ruby extconf.rb && make'}
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
+Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
@@ -29,6 +32,16 @@ let g:CommandTAcceptSelectionCommand='e'
 let g:CommandTAcceptSelectionSplitCommand='split'
 let g:CommandTAcceptSelectionVSplitCommand='vs'
 let g:CommandTSCMDirectories='.git,.hg,.svn,.bzr,_darcs,.vimproject'
+nnoremap <leader>l :CommandTLine<cr>
+nnoremap <leader>m :CommandTMRU<cr>
+
+"EasyGrep
+let g:EasyGrepMode=2
+let g:EasyGrepCommand=1
+let g:EasyGrepRecursive=1
+let g:EasyGrepIgnoreCase=1
+
+set grepprg=ag\ --vimgrep\ $*
 
 "vim-gutengags
 let g:gutentags_project_root=['.git','.vimproject']
@@ -54,6 +67,7 @@ set foldmethod=syntax
 set foldlevelstart=0
 set mouse=a
 set noswapfile
+set path+=**
 syntax on 
 colorscheme gruvbox
 filetype indent on
@@ -111,23 +125,16 @@ nnoremap K gT
 nnoremap gV `[v`]
 
 "Navigation of splits
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
 nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
 set splitbelow
-
-
-nnoremap <leader>l :CommandTLine<cr>
-nnoremap <leader>m :CommandTMRU<cr>
 
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
+nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei :tabnew ~/.i3/config<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
