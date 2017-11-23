@@ -36,12 +36,12 @@ nnoremap <leader>l :CommandTLine<cr>
 nnoremap <leader>m :CommandTMRU<cr>
 
 "EasyGrep
-let g:EasyGrepMode=2
+let g:EasyGrepMode=0
 let g:EasyGrepCommand=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepIgnoreCase=1
 
-set grepprg=ag\ --vimgrep\ $*
+set grepprg=ag
 
 "vim-gutengags
 let g:gutentags_project_root=['.git','.vimproject']
@@ -54,6 +54,7 @@ let g:auto_save = 1
 let g:livepreview_previewer = 'zathura'
 let g:instant_markdown_autostart = 0
 let g:markdown_folding = 1
+let g:ale_completion_enabled = 1
 cnoreabbrev tab Tabularize /
 
 let mapleader = ";"
