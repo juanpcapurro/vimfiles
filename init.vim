@@ -5,7 +5,11 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'dkprice/vim-easygrep'
+Plug 'milkypostman/vim-togglelist'
+Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
+Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
@@ -27,7 +31,7 @@ call plug#end()
 "CommandT
 set switchbuf=usetab
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged
-let g:CommandTFileScanner='git'
+let g:CommandTFileScanner='find'
 let g:CommandTAcceptSelectionCommand='e'
 let g:CommandTAcceptSelectionSplitCommand='split'
 let g:CommandTAcceptSelectionVSplitCommand='vs'
@@ -35,13 +39,32 @@ let g:CommandTSCMDirectories='.git,.hg,.svn,.bzr,_darcs,.vimproject'
 nnoremap <leader>l :CommandTLine<cr>
 nnoremap <leader>m :CommandTMRU<cr>
 
-"EasyGrep
+"ALE
+let g:ale_fixers = {
+\   'c': [
+\       'clang-format',
+\   ],
+\}
+
+"EasyGrep -- grepping in general
 let g:EasyGrepMode=0
 let g:EasyGrepCommand=1
 let g:EasyGrepRecursive=1
 let g:EasyGrepIgnoreCase=1
-
 set grepprg=ag
+nnoremap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+nnoremap <script> <silent> <leader>w :call ToggleLocationList()<CR>
+
+"Tagbar
+nnoremap <leader>d :TagbarToggle<cr>
+let g:tagbar_autoclose= 1
+
+"YCM
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tag_files = 1
+let g:ycm_key_detailed_diagnostics = '<leader>D'
+let g:ycm_confirm_extra_conf = 0
 
 "vim-gutengags
 let g:gutentags_project_root=['.git','.vimproject']
@@ -56,6 +79,7 @@ let g:instant_markdown_autostart = 0
 let g:markdown_folding = 1
 let g:ale_completion_enabled = 1
 cnoreabbrev tab Tabularize /
+
 
 let mapleader = ";"
 let localleader = ";"
@@ -73,6 +97,11 @@ syntax on
 colorscheme gruvbox
 filetype indent on
 filetype plugin on 
+
+" tag jumping
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+nnoremap <C-]> <C-]>zz
 
 "autoloading: 
 set autoread
