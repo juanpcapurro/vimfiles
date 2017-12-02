@@ -6,15 +6,14 @@ endif
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'dkprice/vim-easygrep'
 Plug 'milkypostman/vim-togglelist'
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
-Plug 'wincent/command-t',{'do': 'cd ruby/command-t/ext/command-t; make clean; ruby extconf.rb && make'}
 Plug 'morhetz/gruvbox'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
@@ -28,16 +27,20 @@ Plug 'w0rp/ale'
 Plug 'vim-scripts/vim-auto-save'
 call plug#end()
 
-"CommandT
+"ctrlp
 set switchbuf=usetab
-set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged
-let g:CommandTFileScanner='find'
-let g:CommandTAcceptSelectionCommand='e'
-let g:CommandTAcceptSelectionSplitCommand='split'
-let g:CommandTAcceptSelectionVSplitCommand='vs'
-let g:CommandTSCMDirectories='.git,.hg,.svn,.bzr,_darcs,.vimproject'
-nnoremap <leader>l :CommandTLine<cr>
-nnoremap <leader>m :CommandTMRU<cr>
+set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
+nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <leader>m :CtrlPMRU<cr>
+nnoremap <leader>q :CtrlPQuickfix<cr>
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_extensions = ['tag', 'quickfix']
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 
 "ALE
 let g:ale_fixers = {
@@ -45,15 +48,17 @@ let g:ale_fixers = {
 \       'clang-format',
 \   ],
 \}
+let g:ale_linters = {
+\   'c': [''],
+\   'cpp': ['']
+\}
 
-"EasyGrep -- grepping in general
-let g:EasyGrepMode=0
-let g:EasyGrepCommand=1
-let g:EasyGrepRecursive=1
-let g:EasyGrepIgnoreCase=1
-set grepprg=ag
-nnoremap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
-nnoremap <script> <silent> <leader>w :call ToggleLocationList()<CR>
+"grepping
+set grepprg=ag\ --vimgrep\ --skip-vcs-ignores\ --nocolor\ --word-regexp\ --silent\ --literal
+set grepformat=%f:%l:%c:%m
+nnoremap <leader>vv :grep <cword><CR>
+nnoremap <leader>vV :grep <cWORD><CR>
+nnoremap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 
 "Tagbar
 nnoremap <leader>d :TagbarToggle<cr>
@@ -89,7 +94,7 @@ set relativenumber
 set number
 set numberwidth=1
 set foldmethod=syntax
-set foldlevelstart=0
+set foldlevelstart=99
 set mouse=a
 set noswapfile
 set path+=**
