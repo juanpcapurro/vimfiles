@@ -17,25 +17,17 @@ git clone https://github.com/juanpcapurro/vimfiles.git ~/.config/nvim
 ```
 Then, open `nvim` (the first time it'll curl for Plug)and run `:PlugInstall`.
 Most of the plugins are hassle-free, but YCM and Command-T have a compiled component.
-Compilation of those might fail if you miss a dependency
-A word of caution for Arch users: I had to add the `--system-libclang` parameter to make it work.
-Also, a pip module called `certifi` was needed. I have no idea what it does.
+Compilation of those might fail if you lack a dependency
 
 ## Mappings and commands worth mentioning
 * `J` and `K` change tabs
 * `;t` opens CommandT and lets you search for files in the current proyect.
 * `;m` opens CommandT, but searchs accross recently opened files.
 Other mappings are `;l` (searchs for matches in lines of the current buffer, barely used since I find `/` more comfortable) and `;j`, which lets you search accross the files present in vim's _jumplist_. I'll soon explain what the jumplist is and how to use it.
-* `;vv` greps for the word under the cursor, `;vV` greps for the WORD under the cursor instead
 ## Settings worth mentioning
 * Navigation is visual, and soft wrapping is enabled.
 ## Featured plugins
 
-#### [YCM](https://github.com/Valloric/YouCompleteMe)
-Fancier autocomplete than vim's default, usage is simple: when typing a word, possible matches are shown in a list.
-If you press tab, you select the first element of that list, and YCM completes it for you.
-Otherwise, it leaves you alone.
-Oh, and with the provided `ycm_extra_conf.py`, it provides IDE-like syntax checking for C-family languages.
 #### [CommandT](https://github.com/wincent/command-t)
 Really nice tool for fuzzy file searching. Use `leader-t` to open it in normal mode, to search for files in the current directory or git repo, `leader-m` to open it in MRU mode, to search for recently used files, and `leader-l` to search for lines in the current buffer.
 #### [auto-pairs](https://github.com/jiangmiao/auto-pairs)
@@ -46,8 +38,6 @@ I use it mainly to align C assignments, or markdown and LaTex tables. For exampl
 Colorscheme with dark and light variants.
 #### [vim-airline](https://github.com/vim-airline/vim-airline)
 Makes the bottom line nicer to the eye, and it displays some useful info, such as word count, the character used for indentation, etc.
-#### [vim-easygrep](https://github.com/dkprice/vim-easygrep)
-Find and replace with regular expressions, 
 #### [vim-surround](https://github.com/tpope/vim-surround)
 * Surround selected text with parenthesis with `S)`
 * Want to give _emphasis_ to a word after typing it? In normal mode: `ysiw_`

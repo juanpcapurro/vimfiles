@@ -12,10 +12,11 @@ flags = [
   '-DNDEBUG',
   '-std=c99',
   '-xc',
+  '-I.',
   '-isystem/usr/include/',
-  ]
+]
 
-SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', ]
+SOURCE_EXTENSIONS = [ '.S', '.cpp', '.cxx', '.cc', '.c', '.h']
 
 def FlagsForFile( filename, **kwargs ):
   return {
