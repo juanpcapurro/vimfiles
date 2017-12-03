@@ -5,8 +5,7 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'milkypostman/vim-togglelist'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable}
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
@@ -14,6 +13,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'shinnya/ctrlp-jumplist'
+Plug 'DeaR/ctrlp-location-list'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
@@ -33,8 +34,11 @@ set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>m :CtrlPMRU<cr>
 nnoremap <leader>q :CtrlPQuickfix<cr>
+nnoremap <leader>j :CtrlPJumpList<cr>
+nnoremap <leader>l :CtrlPLocList<cr>
 let g:ctrlp_map = '<leader>p'
-let g:ctrlp_extensions = ['tag', 'quickfix']
+let g:ctrlp_extensions = ['tag', 'quickfix', 'jumplist']
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:0'
 let g:ctrlp_user_command = {
   \ 'types': {
     \ 1: ['.git', 'cd %s && git ls-files'],
@@ -58,7 +62,6 @@ set grepprg=ag\ --vimgrep\ --skip-vcs-ignores\ --nocolor\ --word-regexp\ --silen
 set grepformat=%f:%l:%c:%m
 nnoremap <leader>vv :grep <cword><CR>
 nnoremap <leader>vV :grep <cWORD><CR>
-nnoremap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 
 "Tagbar
 nnoremap <leader>d :TagbarToggle<cr>
@@ -178,6 +181,7 @@ nnoremap <leader>nt d0i<tab>def ""(){<cr>}<esc>k0wwa
 nnoremap <leader>f :NERDTreeToggle<cr>
 inoremap jk <esc>
 nnoremap <space> za
+nnoremap <leader>cb i```<cr>```<esc>kp
 
 cnoreabbrev mks mksession!
 
