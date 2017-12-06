@@ -88,6 +88,8 @@ let g:markdown_folding = 1
 let g:ale_completion_enabled = 1
 cnoreabbrev tab Tabularize /
 
+"Source a project-specific vimrc, if it exists
+silent! so .vimlocal
 
 let mapleader = ";"
 let localleader = ";"
