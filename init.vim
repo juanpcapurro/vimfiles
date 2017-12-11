@@ -4,28 +4,32 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
     execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 call plug#begin()
+" Heavy plugins
 Plug 'VundleVim/Vundle.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
-Plug 'majutsushi/tagbar'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-unimpaired'
-Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'shinnya/ctrlp-jumplist'
 Plug 'DeaR/ctrlp-location-list'
 Plug 'scrooloose/nerdtree'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-obsession'
-Plug 'vim-airline/vim-airline'
+" Simple plugins
+Plug 'majutsushi/tagbar'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-scripts/vim-auto-save'
+" Beautifully simple plugins
+Plug 'tpope/vim-unimpaired'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale'
-Plug 'vim-scripts/vim-auto-save'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-obsession'
+" Visual plugins
+Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 "ctrlp
@@ -41,21 +45,9 @@ let g:ctrlp_extensions = ['tag', 'quickfix', 'jumplist']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 let g:ctrlp_user_command = {
   \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files'],
     \ },
   \ 'fallback': 'find %s -type f'
   \ }
-
-"ALE
-let g:ale_fixers = {
-\   'c': [
-\       'clang-format',
-\   ],
-\}
-let g:ale_linters = {
-\   'c': [''],
-\   'cpp': ['']
-\}
 
 "grepping
 set grepprg=ag\ --vimgrep\ --skip-vcs-ignores\ --nocolor\ --word-regexp\ --silent\ --literal
@@ -80,16 +72,32 @@ set statusline+=%{gutentags#statusline()}
 
 "other plugins
 let g:gruvbox_contrast_dark="hard"
-let g:airline#extensions#tabline#enabled = 1
 let g:auto_save = 1
 let g:livepreview_previewer = 'zathura'
 let g:instant_markdown_autostart = 0
-let g:markdown_folding = 1
-let g:ale_completion_enabled = 1
 cnoreabbrev tab Tabularize /
 
-"Source a project-specific vimrc, if it exists
-silent! so .vimlocal
+"Visual settings
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   },
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
+let g:lightline = { 'colorscheme': 'PaperColor' }
+colorscheme PaperColor
 
 let mapleader = ";"
 let localleader = ";"
@@ -104,7 +112,6 @@ set mouse=a
 set noswapfile
 set path+=**
 syntax on 
-colorscheme gruvbox
 filetype indent on
 filetype plugin on 
 
@@ -129,7 +136,6 @@ set autowriteall
 
 "Indenting
 set autoindent
-set smartindent
 set expandtab
 set tabstop=4
 set softtabstop=4
@@ -161,7 +167,6 @@ vnoremap j gj
 vnoremap k gk
 nnoremap J gt
 nnoremap K gT
-
 nnoremap gV `[v`]
 
 "Navigation of splits
@@ -199,3 +204,6 @@ autocmd VimEnter * echo ">^.^<"
 "Terminal mode
 :tnoremap <Esc> <C-\><C-n>
 :tnoremap jk <C-\><C-n>
+
+"Source a project-specific vimrc, if it exists
+silent! so .vimlocal
