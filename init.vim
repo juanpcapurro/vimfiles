@@ -27,9 +27,9 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
 " Visual plugins
-Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "ctrlp
@@ -71,7 +71,6 @@ let g:gutentags_project_root=['.git','.vimproject']
 set statusline+=%{gutentags#statusline()}
 
 "other plugins
-let g:gruvbox_contrast_dark="hard"
 let g:auto_save = 1
 let g:livepreview_previewer = 'zathura'
 let g:instant_markdown_autostart = 0
@@ -96,8 +95,10 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
-let g:lightline = { 'colorscheme': 'PaperColor' }
 colorscheme PaperColor
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='papercolor'
 
 let mapleader = ";"
 let localleader = ";"
@@ -110,7 +111,6 @@ set foldmethod=syntax
 set foldlevelstart=99
 set mouse=a
 set noswapfile
-set path+=**
 syntax on 
 filetype indent on
 filetype plugin on 
@@ -133,6 +133,7 @@ set hlsearch
 set background=dark
 set cursorline
 set autowriteall
+set tags=tags
 
 "Indenting
 set autoindent
