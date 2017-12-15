@@ -8,12 +8,13 @@ call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'shinnya/ctrlp-jumplist'
-Plug 'DeaR/ctrlp-location-list'
 Plug 'scrooloose/nerdtree'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
 Plug 'majutsushi/tagbar'
+Plug 'milkypostman/vim-togglelist'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
@@ -35,11 +36,10 @@ call plug#end()
 "ctrlp
 set switchbuf=usetab
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
-nnoremap <leader>t :CtrlPTag<cr>
-nnoremap <leader>m :CtrlPMRU<cr>
-nnoremap <leader>q :CtrlPQuickfix<cr>
-nnoremap <leader>j :CtrlPJumpList<cr>
-nnoremap <leader>l :CtrlPLocList<cr>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>T :BTags<cr>
+nnoremap <leader>m :FZFMru<cr>
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'jumplist']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
@@ -183,6 +183,7 @@ nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei :tabnew ~/.i3/config<cr>
+nnoremap <leader>en :tabnew ~/notes.md<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 vnoremap <leader>/ <esc>'<O/*<esc>'>o*/<esc>
 nnoremap <leader>nt d0i<tab>def ""(){<cr>}<esc>k0wwa
