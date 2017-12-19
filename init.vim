@@ -25,38 +25,20 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/rainbow_parentheses.vim'
 " Visual plugins
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-"ctrlp
-set switchbuf=usetab
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
-nnoremap <leader>t :Tags<cr>
-nnoremap <leader>p :Files<cr>
-nnoremap <leader>T :BTags<cr>
-nnoremap <leader>m :FZFMru<cr>
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_extensions = ['tag', 'quickfix', 'jumplist']
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
-let g:ctrlp_user_command = {
-  \ 'types': {
-    \ },
-  \ 'fallback': 'find %s -type f'
-  \ }
 
 "grepping
 set grepprg=ag\ --vimgrep\ --skip-vcs-ignores\ --nocolor\ --word-regexp\ --silent\ --literal
 set grepformat=%f:%l:%c:%m
-nnoremap <leader>vv :grep <cword><CR>
-nnoremap <leader>vV :grep <cWORD><CR>
-
-"Tagbar
-nnoremap <leader>d :TagbarToggle<cr>
 let g:tagbar_autoclose= 1
 
 "YCM
@@ -142,7 +124,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-nnoremap <leader><space> :nohlsearch <CR>
 
 "Use of system clipboard
 set clipboard=unnamedplus
@@ -161,6 +142,10 @@ augroup cfggroup
     autocmd BufEnter *.html setlocal softtabstop=2
 augroup END
 
+"
+" MAPPINGS
+"
+
 "visual    navigation
 nnoremap j gj
 nnoremap k gk
@@ -177,22 +162,25 @@ set splitbelow
 
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
-nnoremap <leader>o o<esc>
-nnoremap <leader>O O<esc>
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei :tabnew ~/.i3/config<cr>
 nnoremap <leader>en :tabnew ~/notes.md<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-vnoremap <leader>/ <esc>'<O/*<esc>'>o*/<esc>
-nnoremap <leader>nt d0i<tab>def ""(){<cr>}<esc>k0wwa
-nnoremap <leader>f :NERDTreeToggle<cr>
 inoremap jk <esc>
 nnoremap <space> za
 nnoremap <leader>cb i```<cr>```<esc>kp
 
-cnoreabbrev mks mksession!
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>T :BTags<cr>
+nnoremap <leader>m :FZFMru<cr>
+nnoremap <leader>f :NERDTreeToggle<cr>
+nnoremap <leader>d :TagbarToggle<cr>
+nnoremap <leader>vv :grep <cword><CR>
+nnoremap <leader>vV :grep <cWORD><CR>
+nnoremap <leader><space> :nohlsearch <CR>
 
 noremap <up> <nop>
 noremap <down> <nop>
