@@ -21,6 +21,7 @@ Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'tpope/vim-fugitive'
 " Beautifully simple plugins
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
