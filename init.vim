@@ -24,6 +24,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Beautifully simple plugins
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -58,7 +59,6 @@ set statusline+=%{gutentags#statusline()}
 let g:auto_save = 1
 let g:livepreview_previewer = 'zathura'
 let g:instant_markdown_autostart = 0
-cnoreabbrev tab Tabularize /
 
 "Visual settings
 let g:PaperColor_Theme_Options = {
@@ -121,10 +121,7 @@ set tags=tags
 
 "Indenting
 set autoindent
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
 
 
 "Use of system clipboard
@@ -192,10 +189,6 @@ noremap <right> <nop>
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo.
 
 autocmd VimEnter * echo ">^.^<"
-
-"Terminal mode
-:tnoremap <Esc> <C-\><C-n>
-:tnoremap jk <C-\><C-n>
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
