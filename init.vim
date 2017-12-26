@@ -119,6 +119,9 @@ set cursorline
 set autowriteall
 set tags=tags
 
+set listchars=tab:>-,space:·
+set list
+
 "Indenting
 set autoindent
 set tabstop=2
