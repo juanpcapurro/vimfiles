@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
+Plug 'airblade/vim-gitgutter'
 " Simple plugins
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
@@ -40,7 +41,7 @@ call plug#end()
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 
 "grepping
-set grepprg=ag\ --vimgrep\ --skip-vcs-ignores\ --nocolor\ --word-regexp\ --silent\ --literal
+set grepprg=ag\ --vimgrep\ --silent\ --literal
 set grepformat=%f:%l:%c:%m
 let g:tagbar_autoclose= 1
 
