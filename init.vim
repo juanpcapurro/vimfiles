@@ -25,7 +25,6 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Beautifully simple plugins
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -131,10 +130,14 @@ set tabstop=2
 "Use of system clipboard
 set clipboard=unnamedplus
 
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
 "specific commands by filetype
 augroup cfggroup
     autocmd!
-    autocmd FileType ruby setlocal tabstop=2
     autocmd FileType ruby setlocal shiftwidth=2
     autocmd FileType ruby setlocal softtabstop=2
     autocmd BufEnter *.js setlocal tabstop=2
@@ -143,6 +146,7 @@ augroup cfggroup
     autocmd BufEnter *.html setlocal tabstop=2
     autocmd BufEnter *.html setlocal shiftwidth=2
     autocmd BufEnter *.html setlocal softtabstop=2
+    autocmd BufEnter Makefile setlocal tabstop
 augroup END
 
 "
@@ -185,6 +189,9 @@ nnoremap <leader>d :TagbarToggle<cr>
 nnoremap <leader>vv :grep <cword><CR>
 nnoremap <leader>vV :grep <cWORD><CR>
 nnoremap <leader><space> :nohlsearch <CR>
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 noremap <up> <nop>
 noremap <down> <nop>
