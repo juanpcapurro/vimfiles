@@ -7,23 +7,24 @@ call plug#begin()
 " Heavy plugins
 Plug 'VundleVim/Vundle.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
 Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
-Plug 'majutsushi/tagbar'
-Plug 'milkypostman/vim-togglelist'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
-Plug 'xuhdev/vim-latex-live-preview'
+Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Beautifully simple plugins
+Plug 'majutsushi/tagbar'
+Plug 'milkypostman/vim-togglelist'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 Plug 'jiangmiao/auto-pairs'
@@ -51,15 +52,33 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tag_files = 1
 let g:ycm_key_detailed_diagnostics = '<leader>D'
 let g:ycm_confirm_extra_conf = 0
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "vim-gutengags
 let g:gutentags_project_root=['.git','.vimproject']
 set statusline+=%{gutentags#statusline()}
 
+" ALE
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'c': [],
+\   'cpp': []
+\}
+
+"rainbow-parentheses
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+"vimtex
+let g:vimtex_view_general_viewer='zathura'
+
 "other plugins
 let g:auto_save = 1
-let g:livepreview_previewer = 'zathura'
 let g:instant_markdown_autostart = 0
+let g:polyglot_disabled=['latex']
 
 "Visual settings
 let g:PaperColor_Theme_Options = {
@@ -202,6 +221,7 @@ noremap <right> <nop>
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo.
 
 autocmd VimEnter * echo ">^.^<"
+autocmd VimEnter * RainbowParentheses
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
