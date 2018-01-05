@@ -8,7 +8,7 @@ call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --js-completer --clang-completer' }
+Plug 'Valloric/YouCompleteMe',{'do': './install.py --js-completer --clang-completer' }
 Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
@@ -209,6 +209,10 @@ nnoremap <leader>d :TagbarToggle<cr>
 nnoremap <leader>vv :grep <cword><CR>
 nnoremap <leader>vV :grep <cWORD><CR>
 nnoremap <leader><space> :nohlsearch <CR>
+
+nnoremap ]g :GitGutterNextHunk<cr>zz
+nnoremap [g :GitGutterPrevHunk<cr>zz
+nnoremap =g :GitGutterUndoHunk<cr>zz
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
