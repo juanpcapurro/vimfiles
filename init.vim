@@ -21,6 +21,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'XadillaX/json-formatter.vim',{'do': 'sudo npm i -g jjson'}
 " Beautifully simple plugins
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
@@ -67,6 +68,7 @@ let g:ale_linters = {
 \   'c': [],
 \   'cpp': []
 \}
+let g:ale_lint_on_text_changed = 'never'
 
 "rainbow-parentheses
 let g:rainbow#max_level = 16
@@ -111,7 +113,7 @@ set lazyredraw
 set relativenumber
 set number
 set numberwidth=1
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevelstart=99
 set mouse=a
 set noswapfile
@@ -163,6 +165,7 @@ augroup cfggroup
     autocmd BufEnter *.js setlocal tabstop=2
     autocmd BufEnter *.js setlocal shiftwidth=2
     autocmd BufEnter *.js setlocal softtabstop=2
+    autocmd BufEnter *.js setlocal foldmethod=syntax
     autocmd BufEnter *.html setlocal tabstop=2
     autocmd BufEnter *.html setlocal shiftwidth=2
     autocmd BufEnter *.html setlocal softtabstop=2
