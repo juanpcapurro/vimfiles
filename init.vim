@@ -15,13 +15,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'suan/vim-instant-markdown',{'do': 'sudo npm i -g instant-markdown-d'}
-Plug 'lervag/vimtex'
+Plug 'suan/vim-instant-markdown',{'do': 'npm i -g instant-markdown-d'}
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'XadillaX/json-formatter.vim',{'do': 'sudo npm i -g jjson'}
+" Language-specific plugins
+Plug 'hushicai/tagbar-javascript.vim', {'do':'npm i -g esctags'}
+Plug 'XadillaX/json-formatter.vim',{'do': 'npm i -g jjson'}
+Plug 'lervag/vimtex'
+Plug 'ternjs/tern_for_vim',{'do':'npm install'}
 " Beautifully simple plugins
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
@@ -53,6 +56,10 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tag_files = 1
 let g:ycm_key_detailed_diagnostics = '<leader>D'
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_filetype_specific_completion_to_disable = {
+\     'gitcommit': 1,
+\     'javascript': 1
+\   }
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
@@ -68,6 +75,11 @@ let g:ale_linters = {
 \   'c': [],
 \   'cpp': []
 \}
+let g:ale_fixers = {
+\   'javascript': [
+\       'eslint'
+\   ],
+\}
 let g:ale_lint_on_text_changed = 'never'
 
 "rainbow-parentheses
@@ -79,6 +91,7 @@ let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
 let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 let g:instant_markdown_autostart = 0
 let g:polyglot_disabled=['latex']
 
@@ -166,6 +179,7 @@ augroup cfggroup
     autocmd BufEnter *.js setlocal shiftwidth=2
     autocmd BufEnter *.js setlocal softtabstop=2
     autocmd BufEnter *.js setlocal foldmethod=syntax
+    autocmd BufEnter *.js nnoremap <buffer> <C-]> :TernDef<CR>
     autocmd BufEnter *.html setlocal tabstop=2
     autocmd BufEnter *.html setlocal shiftwidth=2
     autocmd BufEnter *.html setlocal softtabstop=2
