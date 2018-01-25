@@ -7,7 +7,7 @@ call plug#begin()
 " Heavy plugins
 Plug 'VundleVim/Vundle.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'w0rp/ale'
+Plug 'w0rp/ale',{'do':'npm i -g eslint eslint-plugin-json prettier'}
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --js-completer --clang-completer' }
 Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
@@ -21,10 +21,9 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Language-specific plugins
-Plug 'hushicai/tagbar-javascript.vim', {'do':'npm i -g esctags'}
-Plug 'XadillaX/json-formatter.vim',{'do': 'npm i -g jjson'}
+" Plug 'hushicai/tagbar-javascript.vim', {'do':'npm i -g esctags'}
 Plug 'lervag/vimtex'
-Plug 'ternjs/tern_for_vim',{'do':'npm install'}
+" Plug 'ternjs/tern_for_vim',{'do':'npm install'}
 " Beautifully simple plugins
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
@@ -81,6 +80,8 @@ let g:ale_fixers = {
 \   ],
 \}
 let g:ale_lint_on_text_changed = 'never'
+nnoremap ]e :ALENext<cr>
+nnoremap [e :ALEPrevious<cr>
 
 "rainbow-parentheses
 let g:rainbow#max_level = 16
@@ -90,10 +91,11 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
-let g:auto_save = 1
+let g:auto_save = 0
 let g:auto_save_in_insert_mode = 0
 let g:instant_markdown_autostart = 0
 let g:polyglot_disabled=['latex']
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 "Visual settings
 let g:PaperColor_Theme_Options = {
