@@ -5,10 +5,9 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 " Heavy plugins
-Plug 'VundleVim/Vundle.vim'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'w0rp/ale',{'do':'npm i -g eslint eslint-plugin-json prettier'}
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --js-completer --clang-completer' }
+Plug 'w0rp/ale',{'do':'npm i -g eslint '}
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
@@ -17,13 +16,12 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'suan/vim-instant-markdown',{'do': 'npm i -g instant-markdown-d'}
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-scripts/vim-auto-save'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Language-specific plugins
 " Plug 'hushicai/tagbar-javascript.vim', {'do':'npm i -g esctags'}
 Plug 'lervag/vimtex'
-" Plug 'ternjs/tern_for_vim',{'do':'npm install'}
+Plug 'ternjs/tern_for_vim',{'do':'npm install'}
 " Beautifully simple plugins
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
@@ -80,7 +78,8 @@ let g:ale_fixers = {
 \   ],
 \}
 let g:ale_lint_on_text_changed = 'never'
-nnoremap ]e :ALENext<cr>
+" This is most likely redundant, ALE loads error into the loclist, right?
+nnoremap ]e :ALENext<cr> 
 nnoremap [e :ALEPrevious<cr>
 
 "rainbow-parentheses
@@ -91,8 +90,6 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
-let g:auto_save = 0
-let g:auto_save_in_insert_mode = 0
 let g:instant_markdown_autostart = 0
 let g:polyglot_disabled=['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -175,13 +172,16 @@ set tabstop=4
 "specific commands by filetype
 augroup cfggroup
     autocmd!
+    autocmd FocusLost * silent! wa
     autocmd FileType ruby setlocal shiftwidth=2
     autocmd FileType ruby setlocal softtabstop=2
-    autocmd BufEnter *.js setlocal tabstop=2
-    autocmd BufEnter *.js setlocal shiftwidth=2
-    autocmd BufEnter *.js setlocal softtabstop=2
-    autocmd BufEnter *.js setlocal foldmethod=syntax
-    autocmd BufEnter *.js nnoremap <buffer> <C-]> :TernDef<CR>
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
+    autocmd FileType javascript setlocal tabstop=2
+    autocmd FileType javascript setlocal shiftwidth=2
+    autocmd FileType javascript setlocal softtabstop=2
+    autocmd FileType javascript setlocal foldmethod=syntax
+    autocmd FileType javascript nnoremap <buffer> <C-]> :TernDef<CR>
+    autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
     autocmd BufEnter *.html setlocal tabstop=2
     autocmd BufEnter *.html setlocal shiftwidth=2
     autocmd BufEnter *.html setlocal softtabstop=2
@@ -217,7 +217,6 @@ nnoremap <leader>en :tabnew ~/notes.md<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 inoremap jk <esc>
 nnoremap <space> za
-nnoremap <leader>cb i```<cr>```<esc>kp
 
 nnoremap <leader>t :Tags<cr>
 nnoremap <leader>p :Files<cr>
