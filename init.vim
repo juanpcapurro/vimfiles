@@ -5,7 +5,7 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 " Heavy plugins
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --js-completer --clang-completer' }
+Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
 Plug 'w0rp/ale',{'do':'npm i -g eslint '}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/nerdtree'
@@ -54,8 +54,7 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 let g:ycm_key_detailed_diagnostics = '<leader>D'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_specific_completion_to_disable = {
-\     'gitcommit': 1,
-\     'javascript': 1
+\     'gitcommit': 1
 \   }
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
@@ -77,10 +76,6 @@ let g:ale_fixers = {
 \       'eslint'
 \   ],
 \}
-let g:ale_lint_on_text_changed = 'never'
-" This is most likely redundant, ALE loads error into the loclist, right?
-nnoremap ]e :ALENext<cr> 
-nnoremap [e :ALEPrevious<cr>
 
 "rainbow-parentheses
 let g:rainbow#max_level = 16
@@ -140,8 +135,6 @@ nnoremap <C-]> <C-]>zz
 
 "autoloading: 
 set autoread
-au CursorHold,CursorHoldI * checktime
-au FocusGained,BufEnter * :checktime
 
 set wildmenu
 set incsearch
@@ -165,26 +158,42 @@ set tabstop=2
 set clipboard=unnamedplus
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 "specific commands by filetype
-augroup cfggroup
+augroup javascriptcommands
     autocmd!
+    autocmd BufEnter *.js setlocal omnifunc=tern#Complete
+    autocmd BufEnter *.js setlocal foldmethod=syntax
+    autocmd BufEnter *.js nnoremap <buffer> <C-]> :TernDef<CR>
+augroup END
+
+augroup latexcommands
+    autocmd!
+    autocmd BufEnter *.tex setlocal spell
+    autocmd BufEnter *.tex setlocal spelllang=es
+augroup END
+
+augroup ccppcommands
+    autocmd!
+    autocmd BufEnter *.cpp setlocal tabstop=4
+    autocmd BufEnter *.cpp setlocal shiftwidth=4
+    autocmd BufEnter *.cpp setlocal softtabstop=4
+    autocmd BufEnter *.c setlocal tabstop=4
+    autocmd BufEnter *.c setlocal shiftwidth=4
+    autocmd BufEnter *.c setlocal softtabstop=4
+augroup END
+
+augroup othercfgs
+    autocmd!
+    autocmd VimEnter * echo ">^.^<"
+    autocmd VimEnter * RainbowParentheses
     autocmd FocusLost * silent! wa
-    autocmd FileType ruby setlocal shiftwidth=2
-    autocmd FileType ruby setlocal softtabstop=2
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-    autocmd FileType javascript setlocal tabstop=2
-    autocmd FileType javascript setlocal shiftwidth=2
-    autocmd FileType javascript setlocal softtabstop=2
-    autocmd FileType javascript setlocal foldmethod=syntax
-    autocmd FileType javascript nnoremap <buffer> <C-]> :TernDef<CR>
+    autocmd CursorHold,CursorHoldI * checktime
+    autocmd FocusGained,BufEnter * :checktime
     autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
-    autocmd BufEnter *.html setlocal tabstop=2
-    autocmd BufEnter *.html setlocal shiftwidth=2
-    autocmd BufEnter *.html setlocal softtabstop=2
     autocmd BufEnter Makefile setlocal tabstop
 augroup END
 
@@ -241,9 +250,6 @@ noremap <left> <nop>
 noremap <right> <nop>
 
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo.
-
-autocmd VimEnter * echo ">^.^<"
-autocmd VimEnter * RainbowParentheses
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
