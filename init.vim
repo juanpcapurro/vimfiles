@@ -23,6 +23,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 Plug 'ternjs/tern_for_vim',{'do':'npm install'}
 " Beautifully simple plugins
+Plug 'ton/vim-bufsurf'
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
 Plug 'christoomey/vim-tmux-navigator'
@@ -237,9 +238,12 @@ nnoremap <leader>vv :grep <cword><CR>
 nnoremap <leader>vV :grep <cWORD><CR>
 nnoremap <leader><space> :nohlsearch <CR>
 
-nnoremap ]g :GitGutterNextHunk<cr>zz
-nnoremap [g :GitGutterPrevHunk<cr>zz
-nnoremap =g :GitGutterUndoHunk<cr>zz
+nnoremap ]g :GitGutterNextHunk<cr>
+nnoremap [g :GitGutterPrevHunk<cr>
+nnoremap =g :GitGutterUndoHunk<cr>
+
+nnoremap [b :BufSurfBack<cr>
+nnoremap ]b :BufSurfForward<cr>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
