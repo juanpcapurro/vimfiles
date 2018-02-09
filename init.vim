@@ -89,6 +89,7 @@ let g:vimtex_view_general_viewer='zathura'
 let g:instant_markdown_autostart = 0
 let g:polyglot_disabled=['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let NERDTreeQuitOnOpen=1
 
 "Visual settings
 let g:PaperColor_Theme_Options = {
@@ -179,12 +180,9 @@ augroup END
 
 augroup ccppcommands
     autocmd!
-    autocmd BufEnter *.cpp setlocal tabstop=4
-    autocmd BufEnter *.cpp setlocal shiftwidth=4
-    autocmd BufEnter *.cpp setlocal softtabstop=4
-    autocmd BufEnter *.c setlocal tabstop=4
-    autocmd BufEnter *.c setlocal shiftwidth=4
-    autocmd BufEnter *.c setlocal softtabstop=4
+    autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=4
+    autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=4
+    autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=4
 augroup END
 
 augroup othercfgs
