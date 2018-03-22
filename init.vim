@@ -22,7 +22,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
 Plug 'ternjs/tern_for_vim',{'do':'npm install'}
-Plug 'flowtype/vim-flow',{'do':'npm i -g flow-bin'}
 " Beautifully simple plugins
 Plug 'ton/vim-bufsurf'
 Plug 'majutsushi/tagbar'
@@ -71,8 +70,8 @@ set statusline+=%{gutentags#statusline()}
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'c': [],
-\   'cpp': []
+\   'c': ['cpplint'],
+\   'cpp': ['cpplint']
 \}
 let g:ale_fixers = {
 \   'javascript': [
@@ -217,7 +216,7 @@ nnoremap gV `[v`]
 "Navigation of splits
 nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
-set splitbelow
+set splitright
 
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
