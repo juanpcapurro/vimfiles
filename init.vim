@@ -19,8 +19,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Language-specific plugins
-" Plug 'hushicai/tagbar-javascript.vim', {'do':'npm i -g esctags'}
 Plug 'lervag/vimtex'
+Plug 'pangloss/vim-javascript'
 Plug 'ternjs/tern_for_vim',{'do':'npm install'}
 " Beautifully simple plugins
 Plug 'ton/vim-bufsurf'
@@ -33,6 +33,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Visual plugins
@@ -44,7 +45,7 @@ call plug#end()
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 
 "grepping
-set grepprg=ag\ --vimgrep\ --silent\ --literal
+set grepprg=ag\ --vimgrep\ --silent
 set grepformat=%f:%l:%c:%m
 let g:tagbar_autoclose= 1
 
@@ -69,8 +70,8 @@ set statusline+=%{gutentags#statusline()}
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'c': [],
-\   'cpp': []
+\   'c': ['cpplint'],
+\   'cpp': ['cpplint']
 \}
 let g:ale_fixers = {
 \   'javascript': [
@@ -90,6 +91,8 @@ let g:instant_markdown_autostart = 0
 let g:polyglot_disabled=['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeQuitOnOpen=1
+let g:flow#showquickfix = 0
+let g:javascript_plugin_flow = 1
 
 "Visual settings
 let g:PaperColor_Theme_Options = {
@@ -167,9 +170,10 @@ set tabstop=2
 "specific commands by filetype
 augroup javascriptcommands
     autocmd!
-    autocmd BufEnter *.js setlocal omnifunc=tern#Complete
-    autocmd BufEnter *.js setlocal foldmethod=syntax
-    autocmd BufEnter *.js nnoremap <buffer> <C-]> :TernDef<CR>
+    autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
+    "autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
+    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
+    "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
 augroup END
 
 augroup latexcommands
@@ -212,7 +216,7 @@ nnoremap gV `[v`]
 "Navigation of splits
 nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
-set splitbelow
+set splitright
 
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
@@ -230,6 +234,7 @@ nnoremap <leader>t :Tags<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>T :BTags<cr>
 nnoremap <leader>m :FZFMru<cr>
+nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :NERDTreeToggle<cr>
 nnoremap <leader>d :TagbarToggle<cr>
 nnoremap <leader>vv :grep <cword><CR>
