@@ -216,7 +216,8 @@ nnoremap gV `[v`]
 "Navigation of splits
 nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
-set splitright
+set splitbelow
+set diffopt+=vertical
 
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
