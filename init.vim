@@ -148,6 +148,8 @@ set smartcase
 set hlsearch
 set background=dark
 set cursorline
+set undofile
+set undodir=~/.config/nvim/undo_history
 set autowriteall
 set tags=tags
 
@@ -156,16 +158,15 @@ set list
 
 "Indenting
 set autoindent
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 set tabstop=2
 
 
 "Use of system clipboard
 set clipboard=unnamedplus
 
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
 
 "specific commands by filetype
 augroup javascriptcommands
