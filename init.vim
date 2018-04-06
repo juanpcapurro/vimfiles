@@ -163,11 +163,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
-
-"Use of system clipboard
-set clipboard=unnamedplus
-
-
 "specific commands by filetype
 augroup javascriptcommands
     autocmd!
