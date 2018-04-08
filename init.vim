@@ -6,7 +6,7 @@ endif
 call plug#begin()
 " Heavy plugins
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
-Plug 'w0rp/ale',{'do':'npm i -g eslint '}
+Plug 'w0rp/ale',{'branch': 'master'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
@@ -193,7 +193,7 @@ augroup othercfgs
     autocmd CursorHold,CursorHoldI * checktime
     autocmd FocusGained,BufEnter * :checktime
     autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
-    autocmd BufEnter Makefile setlocal tabstop
+    autocmd BufEnter Makefile setlocal tabstop=2
 augroup END
 
 "
