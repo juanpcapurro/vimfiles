@@ -253,7 +253,7 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-iabbrev ssig <cr>---<cr>Saludos, Juan Pablo.
+iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
