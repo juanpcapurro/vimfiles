@@ -5,7 +5,7 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 " Heavy plugins
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
+Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer' }
 Plug 'w0rp/ale',{'branch': 'master'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/nerdtree'
@@ -21,6 +21,7 @@ Plug 'tpope/vim-fugitive'
 " Language-specific plugins
 Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ternjs/tern_for_vim',{'do':'npm install'}
 " Beautifully simple plugins
 Plug 'ton/vim-bufsurf'
@@ -45,7 +46,7 @@ call plug#end()
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 
 "grepping
-set grepprg=ag\ --vimgrep\ --silent
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.min*'
 set grepformat=%f:%l:%c:%m
 let g:tagbar_autoclose= 1
 
@@ -93,6 +94,7 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeQuitOnOpen=1
 let g:flow#showquickfix = 0
 let g:javascript_plugin_flow = 1
+let g:used_javascript_libs = 'angular'
 
 "Visual settings
 let g:PaperColor_Theme_Options = {
@@ -180,9 +182,9 @@ augroup END
 
 augroup ccppcommands
     autocmd!
-    autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=4
-    autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=4
-    autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=4
+    autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=2
+    autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=2
+    autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=2
 augroup END
 
 augroup othercfgs
@@ -213,6 +215,7 @@ nnoremap gV `[v`]
 nnoremap tt :tab split <CR>
 nnoremap Q :q<CR>
 set splitbelow
+set splitright
 set diffopt+=vertical
 
 inoremap <c-u> <esc>bveUA
