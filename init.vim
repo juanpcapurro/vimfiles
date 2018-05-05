@@ -22,7 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'ternjs/tern_for_vim',{'do':'npm install'}
+Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 " Beautifully simple plugins
 Plug 'ton/vim-bufsurf'
 Plug 'majutsushi/tagbar'
@@ -71,8 +71,8 @@ set statusline+=%{gutentags#statusline()}
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'c': ['cpplint'],
-\   'cpp': ['cpplint']
+\   'c': ['cpplint', 'cppcheck'],
+\   'cpp': ['cpplint', 'cppcheck']
 \}
 let g:ale_fixers = {
 \   'javascript': [
@@ -168,10 +168,10 @@ set tabstop=2
 "specific commands by filetype
 augroup javascriptcommands
     autocmd!
-    autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
-    "autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
-    "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
+    "autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
+    autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
+    "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
+    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
 augroup END
 
 augroup latexcommands
