@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'jamesroutley/vim-logbook'
 Plug 'suan/vim-instant-markdown',{'do': 'npm i -g instant-markdown-d'}
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
@@ -30,6 +31,7 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -46,7 +48,7 @@ call plug#end()
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 
 "grepping
-set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.min*'
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.min*'\ --ignore='*.pyc'
 set grepformat=%f:%l:%c:%m
 let g:tagbar_autoclose= 1
 
@@ -65,19 +67,20 @@ endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "vim-gutengags
+let g:gutentags_enabled=0
 let g:gutentags_project_root=['.git','.vimproject']
 set statusline+=%{gutentags#statusline()}
 
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'python': ['flake8'],
 \   'c': ['cpplint', 'cppcheck'],
 \   'cpp': ['cpplint', 'cppcheck']
 \}
 let g:ale_fixers = {
-\   'javascript': [
-\       'eslint'
-\   ],
+\   'python': ['flake8'],
+\   'javascript': ['eslint']
 \}
 
 "rainbow-parentheses
@@ -173,6 +176,11 @@ augroup javascriptcommands
     "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
     autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
 augroup END
+augroup python
+    autocmd!
+    autocmd BufEnter *.py,*.jsx setlocal foldmethod=indent
+    autocmd BufEnter *.py,*.jsx nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+augroup END
 
 augroup latexcommands
     autocmd!
@@ -185,6 +193,7 @@ augroup ccppcommands
     autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=2
     autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=2
     autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=2
+    autocmd BufEnter *.cpp,*.c,*.h let g:gutentags_enabled=1
 augroup END
 
 augroup othercfgs
