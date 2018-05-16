@@ -79,7 +79,7 @@ let g:ale_linters = {
 \   'cpp': ['cpplint', 'cppcheck']
 \}
 let g:ale_fixers = {
-\   'python': ['flake8'],
+\   'python': ['autopep8'],
 \   'javascript': ['eslint']
 \}
 
