@@ -178,8 +178,15 @@ augroup javascriptcommands
 augroup END
 augroup python
     autocmd!
-    autocmd BufEnter *.py,*.jsx setlocal foldmethod=indent
-    autocmd BufEnter *.py,*.jsx nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+    autocmd BufEnter *.py setlocal foldmethod=indent
+    autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+augroup END
+
+augroup mail_spanish
+    autocmd!
+    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal nocursorline
+    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spell
+    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
 augroup END
 
 augroup latexcommands
@@ -254,9 +261,6 @@ nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
 nnoremap =g :GitGutterUndoHunk<cr>
 
-nnoremap [b :BufSurfBack<cr>
-nnoremap ]b :BufSurfForward<cr>
-
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
@@ -266,6 +270,11 @@ noremap <left> <nop>
 noremap <right> <nop>
 
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
+iabbrev emjsparkle ✨
+iabbrev emjupsidedown 🙃
+iabbrev emjsob 😭
+iabbrev emjthink 🤔
+iabbrev emjshrug ¯\_(ツ)_/¯
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
