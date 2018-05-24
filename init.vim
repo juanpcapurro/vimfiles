@@ -25,6 +25,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 " Beautifully simple plugins
+Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ton/vim-bufsurf'
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
