@@ -24,6 +24,8 @@ Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ton/vim-bufsurf'
