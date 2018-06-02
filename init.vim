@@ -274,11 +274,13 @@ noremap <left> <nop>
 noremap <right> <nop>
 
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
-iabbrev emjsparkle ✨
-iabbrev emjupsidedown 🙃
-iabbrev emjsob 😭
-iabbrev emjthink 🤔
-iabbrev emjshrug ¯\_(ツ)_/¯
+iabbrev :sparkle: ✨
+iabbrev :upsidedown: 🙃
+iabbrev :sob: 😭
+iabbrev :think: 🤔
+iabbrev :shrug: ¯\_(ツ)_/¯
+iabbrev :wink: 😉
+
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
