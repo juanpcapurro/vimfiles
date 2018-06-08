@@ -25,7 +25,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'Valloric/MatchTagAlways'
-Plug 'Glench/Vim-Jinja2-Syntax'
+"Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
@@ -71,7 +71,7 @@ endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "vim-gutengags
-let g:gutentags_enabled=0
+let g:gutentags_enabled=1
 let g:gutentags_project_root=['.git','.vimproject']
 set statusline+=%{gutentags#statusline()}
 
@@ -234,6 +234,7 @@ nnoremap gV `[v`]
 
 "Navigation of splits
 nnoremap tt :tab split <CR>
+nnoremap TT :only <CR>
 nnoremap Q :q<CR>
 set splitbelow
 set splitright
