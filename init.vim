@@ -21,7 +21,6 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
 " Language-specific plugins
 Plug 'lervag/vimtex'
-Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'Valloric/MatchTagAlways'
@@ -29,7 +28,6 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'ton/vim-bufsurf'
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
 Plug 'christoomey/vim-tmux-navigator'
@@ -161,7 +159,6 @@ set cursorline
 set undofile
 set undodir=~/.config/nvim/undo_history
 set autowriteall
-set tags=tags
 
 set listchars=tab:>-,space:·
 set list
