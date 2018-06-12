@@ -24,6 +24,7 @@ Plug 'lervag/vimtex'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'Valloric/MatchTagAlways'
+Plug 'curist/vim-angular-template'
 "Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
@@ -260,8 +261,8 @@ nnoremap <leader>m :FZFMru<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :NERDTreeToggle<cr>
 nnoremap <leader>d :TagbarToggle<cr>
-nnoremap <leader>vv :grep <cword><CR>
-nnoremap <leader>vV :grep <cWORD><CR>
+nnoremap <leader>vv :grep <cword>
+nnoremap <leader>vV :grep <cWORD>
 nnoremap <leader><space> :nohlsearch <CR>
 
 nnoremap ]g :GitGutterNextHunk<cr>
