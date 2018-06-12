@@ -228,6 +228,10 @@ vnoremap k gk
 nnoremap J gt
 nnoremap K gT
 nnoremap gV `[v`]
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
 
 "Navigation of splits
 nnoremap tt :tab split <CR>
@@ -266,11 +270,6 @@ nnoremap =g :GitGutterUndoHunk<cr>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
 
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
 iabbrev :sparkle: ✨
