@@ -160,6 +160,7 @@ set cursorline
 set undofile
 set undodir=~/.config/nvim/undo_history
 set autowriteall
+set clipboard=unnamed
 
 set listchars=tab:>-,space:·
 set list
@@ -275,6 +276,8 @@ nmap ga <Plug>(EasyAlign)
 iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
 iabbrev :sparkle: ✨
 iabbrev :upsidedown: 🙃
+iabbrev :catsmile: 😺
+iabbrev :lewd: 😏
 iabbrev :sob: 😭
 iabbrev :think: 🤔
 iabbrev :shrug: ¯\_(ツ)_/¯
