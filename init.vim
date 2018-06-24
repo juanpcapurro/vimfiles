@@ -5,7 +5,7 @@ if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
 endif
 call plug#begin()
 " Heavy plugins
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
 Plug 'w0rp/ale',{'branch': 'master'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/nerdtree'
@@ -166,7 +166,7 @@ set listchars=tab:>-,space:·
 set list
 
 "Indenting
-set autoindent
+set smartindent
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -250,8 +250,7 @@ nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei :tabnew ~/.i3/config<cr>
 nnoremap <leader>ep :tabnew ~/.config/polybar/config<cr>
-nnoremap <leader>en :tabnew ~/notes.md<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>en :tabnew ~/notes.md<CR>
 inoremap jk <esc>
 nnoremap <space> za
 
