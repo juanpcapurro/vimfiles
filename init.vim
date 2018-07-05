@@ -96,7 +96,7 @@ let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
 let g:instant_markdown_autostart = 0
-let g:polyglot_disabled=['latex']
+let g:polyglot_disabled= ['markdown', 'latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeQuitOnOpen=1
 let g:flow#showquickfix = 0
@@ -246,6 +246,7 @@ set diffopt+=vertical
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei :tabnew ~/.i3/config<cr>
