@@ -221,6 +221,9 @@ augroup END
 "
 " MAPPINGS
 "
+"
+"spellcheck
+nnoremap zs 1z=]s
 
 "visual    navigation
 nnoremap j gj
@@ -254,6 +257,9 @@ nnoremap <leader>ep :tabnew ~/.config/polybar/config<cr>
 nnoremap <leader>en :tabnew ~/notes.md<CR>
 inoremap jk <esc>
 nnoremap <space> za
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 nnoremap <leader>t :Tags<cr>
 nnoremap <leader>p :Files<cr>
