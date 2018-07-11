@@ -25,6 +25,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'Valloric/MatchTagAlways'
 Plug 'curist/vim-angular-template'
+"Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
@@ -78,6 +79,7 @@ set statusline+=%{gutentags#statusline()}
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
+\   'java': [],
 \   'c': ['cpplint', 'cppcheck'],
 \   'cpp': ['cpplint', 'cppcheck']
 \}
@@ -215,7 +217,7 @@ augroup othercfgs
     autocmd CursorHold,CursorHoldI * checktime
     autocmd FocusGained,BufEnter * :checktime
     autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
-    autocmd BufEnter Makefile setlocal tabstop=2
+    autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
 "
