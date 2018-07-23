@@ -254,7 +254,7 @@ nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
-nnoremap <leader>ei :tabnew ~/.i3/config<cr>
+nnoremap <leader>ei :tabnew ~/.config/i3/config<cr>
 nnoremap <leader>ep :tabnew ~/.config/polybar/config<cr>
 nnoremap <leader>en :tabnew ~/notes.md<CR>
 inoremap jk <esc>
