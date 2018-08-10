@@ -52,7 +52,7 @@ call plug#end()
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 
 "grepping
-set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.min*'\ --ignore='*.pyc'
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'
 set grepformat=%f:%l:%c:%m
 let g:tagbar_autoclose= 1
 
@@ -214,7 +214,7 @@ augroup othercfgs
     autocmd VimEnter * echo ">^.^<"
     autocmd VimEnter * RainbowParentheses
     autocmd FocusLost * silent! wa
-    autocmd CursorHold,CursorHoldI * checktime
+    "autocmd CursorHold,CursorHoldI * checktime
     autocmd FocusGained,BufEnter * :checktime
     autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
@@ -248,6 +248,7 @@ set splitbelow
 set splitright
 set diffopt+=vertical
 
+map <leader>* *:%s///gn<CR>
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
