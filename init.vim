@@ -188,11 +188,13 @@ augroup python
     autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
 augroup END
 
-augroup mail_spanish
+augroup markdown
     autocmd!
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal nocursorline
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spell
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
+    autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
+    autocmd BufEnter *.md nnoremap <buffer> <leader>i o - [  ] 
 augroup END
 
 augroup latexcommands
@@ -216,7 +218,6 @@ augroup othercfgs
     autocmd FocusLost * silent! wa
     "autocmd CursorHold,CursorHoldI * checktime
     autocmd FocusGained,BufEnter * :checktime
-    autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
