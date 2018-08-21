@@ -290,7 +290,7 @@ iabbrev :catsmile: 😺
 iabbrev :lewd: 😏
 iabbrev :sob: 😭
 iabbrev :think: 🤔
-iabbrev :shrug: ¯\_(ツ)_/¯
+iabbrev :shrug: ¯\\_(ツ)_/¯
 iabbrev :wink: 😉
 
 
