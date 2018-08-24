@@ -98,7 +98,7 @@ let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
 let g:instant_markdown_autostart = 0
-let g:polyglot_disabled= ['markdown', 'latex']
+let g:polyglot_disabled= ['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeQuitOnOpen=1
 let g:flow#showquickfix = 0
@@ -195,6 +195,9 @@ augroup markdown
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
     autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
     autocmd BufEnter *.md nnoremap <buffer> <leader>i o - [  ] 
+    autocmd BufEnter *.md setlocal tabstop=4
+    autocmd BufEnter *.md setlocal shiftwidth=4
+    autocmd BufEnter *.md setlocal softtabstop=4
 augroup END
 
 augroup latexcommands
