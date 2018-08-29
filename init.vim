@@ -96,6 +96,10 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 "vimtex
 let g:vimtex_view_general_viewer='zathura'
 
+"vim-markdown by plasticboy (via polyglot)
+let g:vim_markdown_new_list_item_indent=0
+let g:vim_markdown_auto_insert_bullets=0
+
 "other plugins
 let g:instant_markdown_autostart = 0
 let g:polyglot_disabled= ['latex']
@@ -185,7 +189,7 @@ augroup END
 augroup python
     autocmd!
     autocmd BufEnter *.py setlocal foldmethod=indent
-    autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+    "autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
 augroup END
 
 augroup markdown
@@ -194,7 +198,7 @@ augroup markdown
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spell
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
     autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
-    autocmd BufEnter *.md nnoremap <buffer> <leader>i o - [  ] 
+    autocmd BufEnter *.md nnoremap <buffer> <leader>i o- [  ] 
     autocmd BufEnter *.md setlocal tabstop=4
     autocmd BufEnter *.md setlocal shiftwidth=4
     autocmd BufEnter *.md setlocal softtabstop=4
