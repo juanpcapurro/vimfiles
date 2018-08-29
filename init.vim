@@ -127,7 +127,7 @@ let g:PaperColor_Theme_Options = {
 colorscheme PaperColor
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='minimalist'
 
 let mapleader = ";"
 let localleader = ";"
@@ -260,7 +260,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
 nnoremap <leader>ez :tabnew ~/.zshrc<cr>
 nnoremap <leader>ei :tabnew ~/.config/i3/config<cr>
-nnoremap <leader>ep :tabnew ~/.config/polybar/config<cr>
+nnoremap <leader>ep :tabnew ~/.config/i3blocks/config<cr>
 nnoremap <leader>en :tabnew ~/notes.md<CR>
 inoremap jk <esc>
 nnoremap <space> za
