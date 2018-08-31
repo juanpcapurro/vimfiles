@@ -256,6 +256,10 @@ set splitbelow
 set splitright
 set diffopt+=vertical
 
+" Yank things into things
+nmap <leader>cf :let @* = expand("%")<cr>
+nmap <leader>cF :let @* = expand("%:p")<cr>
+
 map <leader>* *:%s///gn<CR>
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
