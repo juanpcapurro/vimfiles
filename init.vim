@@ -132,6 +132,8 @@ colorscheme PaperColor
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 let g:airline_theme='minimalist'
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
 
 let mapleader = ";"
 let localleader = ";"
@@ -253,7 +255,6 @@ nnoremap <Right> :vertical resize -2<CR>
 "Navigation of splits
 nnoremap tt :tab split <CR>
 nnoremap TT :only <CR>
-nnoremap Q :q<CR>
 set splitbelow
 set splitright
 set diffopt+=vertical
@@ -265,13 +266,13 @@ nmap <leader>cF :let @* = expand("%:p")<cr>
 map <leader>* *:%s///gn<CR>
 inoremap <c-u> <esc>bveUA
 nnoremap <c-u> bveU
-nnoremap <leader>ev :tabnew $MYVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>et :tabnew ~/.tmux.conf<cr>
-nnoremap <leader>ez :tabnew ~/.zshrc<cr>
-nnoremap <leader>ei :tabnew ~/.config/i3/config<cr>
-nnoremap <leader>ep :tabnew ~/.config/i3blocks/config<cr>
-nnoremap <leader>en :tabnew ~/notes.md<CR>
+nnoremap <leader>et :e ~/.tmux.conf<cr>
+nnoremap <leader>ez :e ~/.zshrc<cr>
+nnoremap <leader>ei :e ~/.config/i3/config<cr>
+nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
+nnoremap <leader>en :e ~/notes.md<CR>
 inoremap jk <esc>
 nnoremap <space> za
 
