@@ -22,7 +22,7 @@ Plug 'tpope/vim-fugitive'
 " Language-specific plugins
 Plug 'lervag/vimtex'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
+" Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'Valloric/MatchTagAlways'
 Plug 'curist/vim-angular-template'
 "Plug 'artur-shaik/vim-javacomplete2'
@@ -52,7 +52,7 @@ call plug#end()
 set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 
 "grepping
-set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -i
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
 set grepformat=%f:%l:%c:%m
 let g:tagbar_autoclose= 1
 
@@ -105,8 +105,9 @@ let g:instant_markdown_autostart = 0
 let g:polyglot_disabled= ['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeQuitOnOpen=1
-let g:flow#showquickfix = 0
-let g:javascript_plugin_flow = 1
+" let g:flow#showquickfix = 0
+" let g:flow#showquickfix = 0
+" let g:javascript_plugin_flow = 0
 let g:used_javascript_libs = 'angular'
 
 "Visual settings
@@ -186,7 +187,7 @@ augroup javascriptcommands
     "autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
     autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
     "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
+    "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
 augroup END
 augroup python
     autocmd!
