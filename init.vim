@@ -15,7 +15,6 @@ Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'jamesroutley/vim-logbook'
-Plug 'suan/vim-instant-markdown',{'do': 'npm i -g instant-markdown-d'}
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-fugitive'
@@ -133,6 +132,10 @@ colorscheme PaperColor
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 let g:airline_theme='minimalist'
+let g:airline_section_b = ''
+let g:airline_section_y = ''
+let g:airline_section_warning = ''
+let g:airline_section_error = ''
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 
