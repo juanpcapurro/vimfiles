@@ -164,6 +164,7 @@ set autoread
 
 set wildmenu
 set incsearch
+set ignorecase
 set smartcase
 set hlsearch
 set background=dark
