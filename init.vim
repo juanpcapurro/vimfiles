@@ -53,6 +53,7 @@ set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
 "grepping
 set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
 set grepformat=%f:%l:%c:%m
+set path+=**
 let g:tagbar_autoclose= 1
 
 "YCM
@@ -72,7 +73,6 @@ let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 "vim-gutengags
 let g:gutentags_enabled=1
 let g:gutentags_project_root=['.git','.vimproject']
-set statusline+=%{gutentags#statusline()}
 
 " ALE
 let g:ale_linters = {
@@ -134,9 +134,11 @@ let g:airline_powerline_fonts = 0
 let g:airline_theme='minimalist'
 let g:airline_section_b = ''
 let g:airline_section_y = ''
+let g:airline_section_x = ''
 let g:airline_section_warning = ''
 let g:airline_section_error = ''
 let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 
 let mapleader = ";"
@@ -150,21 +152,18 @@ set foldmethod=indent
 set foldlevelstart=99
 set mouse=a
 set noswapfile
+set splitbelow
+set splitright
+set diffopt+=vertical
 syntax on 
 filetype indent on
 filetype plugin on 
-
-" tag jumping
-nnoremap <C-o> <C-o>zz
-nnoremap <C-i> <C-i>zz
-nnoremap <C-]> <C-]>zz
 
 "autoloading: 
 set autoread
 
 set wildmenu
 set incsearch
-set ignorecase
 set smartcase
 set hlsearch
 set background=dark
@@ -248,8 +247,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nnoremap J gt
-nnoremap K gT
 nnoremap gV `[v`]
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
@@ -257,28 +254,20 @@ nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
 "Navigation of splits
-nnoremap tt :tab split <CR>
-nnoremap TT :only <CR>
-set splitbelow
-set splitright
-set diffopt+=vertical
 
 " Yank things into things
 nmap <leader>cf :let @* = expand("%")<cr>
 nmap <leader>cF :let @* = expand("%:p")<cr>
 
 map <leader>* *:%s///gn<CR>
-inoremap <c-u> <esc>bveUA
-nnoremap <c-u> bveU
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>et :e ~/.tmux.conf<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
 nnoremap <leader>en :e ~/notes.md<CR>
+nnoremap <leader>et :e ~/todo.md<CR>
 inoremap jk <esc>
-nnoremap <space> za
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -290,9 +279,6 @@ nnoremap <leader>m :FZFMru<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :NERDTreeToggle<cr>
 nnoremap <leader>d :TagbarToggle<cr>
-nnoremap <leader>vv :grep <cword>
-nnoremap <leader>vV :grep <cWORD>
-nnoremap <leader><space> :nohlsearch <CR>
 
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
