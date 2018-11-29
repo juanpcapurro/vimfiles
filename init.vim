@@ -21,10 +21,10 @@ Plug 'tpope/vim-fugitive'
 " Language-specific plugins
 Plug 'lervag/vimtex'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'ternjs/tern_for_vim'
 " Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'Valloric/MatchTagAlways'
 Plug 'curist/vim-angular-template'
-"Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
@@ -187,9 +187,9 @@ set tabstop=2
 "specific commands by filetype
 augroup javascriptcommands
     autocmd!
-    "autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
+    autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
     autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
-    "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
+    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
     "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
 augroup END
 augroup python
