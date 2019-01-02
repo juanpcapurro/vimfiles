@@ -265,10 +265,13 @@ map <leader>* *:%s///gn<CR>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
+nnoremap <leader>eZ :e ~/.zshenv<cr>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
-nnoremap <leader>en :e ~/notes.md<CR>
-nnoremap <leader>et :e ~/todo.md<CR>
+nnoremap <leader>en :FZF! ~/notes <CR>
+nnoremap <leader>eN :e ~/notes/
+nnoremap <leader>et :FZF! ~/todos <CR>
+nnoremap <leader>eT :e ~/todos/
 inoremap jk <esc>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
