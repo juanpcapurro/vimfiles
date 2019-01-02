@@ -48,12 +48,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
+so ~/.config/nvim/minimal.vim
 
-"grepping
-set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
-set grepformat=%f:%l:%c:%m
-set path+=**
 let g:tagbar_autoclose= 1
 
 "YCM
@@ -87,6 +83,11 @@ let g:ale_fixers = {
 \   'css': ['stylelint'],
 \   'javascript': ['eslint']
 \}
+nnoremap ]a :ALENext<CR>
+nnoremap [a :ALEPrevious<CR>
+nnoremap =a :ALEFix<CR>
+let g:ale_set_loclist  = 0
+let g:ale_set_quickfix = 0
 
 "rainbow-parentheses
 let g:rainbow#max_level = 16
@@ -141,49 +142,6 @@ let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 
-let mapleader = ";"
-let localleader = ";"
-set wrap lbr
-set lazyredraw
-set relativenumber
-set number
-set numberwidth=1
-set foldmethod=indent
-set foldlevelstart=99
-set mouse=a
-set noswapfile
-set splitbelow
-set splitright
-set diffopt+=vertical
-syntax on 
-filetype indent on
-filetype plugin on 
-
-"autoloading: 
-set autoread
-
-set wildmenu
-set incsearch
-set ignorecase
-set smartcase
-set hlsearch
-set background=dark
-set cursorline
-set undofile
-set undodir=~/.config/nvim/undo_history
-set autowriteall
-set clipboard=unnamed
-
-set listchars=tab:>-,space:·
-set list
-
-"Indenting
-set smartindent
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-
 "specific commands by filetype
 augroup javascriptcommands
     autocmd!
@@ -237,46 +195,6 @@ augroup othercfgs
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
-"
-" MAPPINGS
-"
-"
-"spellcheck
-nnoremap zs 1z=]s
-
-"visual    navigation
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap gV `[v`]
-nnoremap <Up>    :resize +2<CR>
-nnoremap <Down>  :resize -2<CR>
-nnoremap <Left>  :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
-
-"Navigation of splits
-
-" Yank things into things
-nmap <leader>cf :let @* = expand("%")<cr>
-nmap <leader>cF :let @* = expand("%:p")<cr>
-
-map <leader>* *:%s///gn<CR>
-nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>ez :e ~/.zshrc<cr>
-nnoremap <leader>eZ :e ~/.zshenv<cr>
-nnoremap <leader>ei :e ~/.config/i3/config<cr>
-nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
-nnoremap <leader>en :FZF! ~/notes <CR>
-nnoremap <leader>eN :e ~/notes/
-nnoremap <leader>et :FZF! ~/todos <CR>
-nnoremap <leader>eT :e ~/todos/
-inoremap jk <esc>
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-
 nnoremap <leader>t :Tags<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>T :BTags<cr>
@@ -292,16 +210,3 @@ nnoremap =g :GitGutterUndoHunk<cr>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
-iabbrev :sparkle: ✨
-iabbrev :upsidedown: 🙃
-iabbrev :catsmile: 😺
-iabbrev :lewd: 😏
-iabbrev :sob: 😭
-iabbrev :think: 🤔
-iabbrev :shrug: ¯\\_(ツ)_/¯
-iabbrev :wink: 😉
-
-
-"Source a project-specific vimrc, if it exists
-silent! so .vimlocal
