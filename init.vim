@@ -3,7 +3,10 @@
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
     execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
-call plug#begin()
+
+so ~/.config/nvim/minimal.vim
+
+call plug#begin('~/.config/nvim/plugged_all')
 " Heavy plugins
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
 Plug 'w0rp/ale',{'branch': 'master'}
@@ -14,25 +17,25 @@ Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'jamesroutley/vim-logbook'
+Plug 'juanpcapurro/vim-logbook'
+Plug 'tpope/vim-fugitive'
+Plug 'juanpcapurro/vim-logbook'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'Valloric/MatchTagAlways'
+Plug 'JulesWang/css.vim'
 " Language-specific plugins
 Plug 'lervag/vimtex'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ternjs/tern_for_vim'
 " Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
-Plug 'Valloric/MatchTagAlways'
 Plug 'curist/vim-angular-template'
 "Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
@@ -48,7 +51,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-so ~/.config/nvim/minimal.vim
 
 let g:tagbar_autoclose= 1
 
@@ -154,45 +156,6 @@ augroup python
     autocmd!
     autocmd BufEnter *.py setlocal foldmethod=indent
     "autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
-augroup END
-
-augroup markdown
-    autocmd!
-    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal nocursorline
-    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spell
-    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
-    autocmd BufEnter *.md nnoremap <buffer> <leader>cb i```<cr>```<esc>kp
-    autocmd BufEnter *.md nnoremap <buffer> <leader>cB i```<cr>```<esc>k"+p
-    autocmd BufEnter *.md nnoremap <buffer> <leader>i o- [  ] 
-    autocmd BufEnter *.md nnoremap <buffer> <leader>I o<tab>- [  ] 
-    autocmd BufEnter *.md nnoremap <buffer> <leader>d 0f]hix<esc>
-    autocmd BufEnter *.md setlocal tabstop=4
-    autocmd BufEnter *.md setlocal shiftwidth=4
-    autocmd BufEnter *.md setlocal softtabstop=4
-augroup END
-
-augroup latexcommands
-    autocmd!
-    autocmd BufEnter *.tex setlocal spell
-    autocmd BufEnter *.tex setlocal spelllang=es
-augroup END
-
-augroup ccppcommands
-    autocmd!
-    autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=2
-    autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=2
-    autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=2
-    autocmd BufEnter *.cpp,*.c,*.h let g:gutentags_enabled=1
-augroup END
-
-augroup othercfgs
-    autocmd!
-    autocmd VimEnter * echo ">^.^<"
-    autocmd VimEnter * RainbowParentheses
-    autocmd FocusLost * silent! wa
-    "autocmd CursorHold,CursorHoldI * checktime
-    autocmd FocusGained,BufEnter * :checktime
-    autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
 nnoremap <leader>t :Tags<cr>
