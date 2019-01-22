@@ -13,7 +13,6 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'juanpcapurro/vim-logbook'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'Valloric/MatchTagAlways'
 Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
