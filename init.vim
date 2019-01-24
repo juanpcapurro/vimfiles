@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
+Plug 'airblade/vim-gitgutter'
 " Simple plugins
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'juanpcapurro/vim-logbook'
