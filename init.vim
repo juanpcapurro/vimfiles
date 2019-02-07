@@ -72,7 +72,7 @@ let g:gutentags_project_root=['.git','.vimproject']
 
 " ALE
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
 \   'python': ['flake8'],
 \   'java': [],
 \   'c': ['cpplint', 'cppcheck'],
@@ -81,7 +81,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'css': ['stylelint'],
-\   'javascript': ['eslint']
+\   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
 \}
 nnoremap ]a :ALENext<CR>
 nnoremap [a :ALEPrevious<CR>
