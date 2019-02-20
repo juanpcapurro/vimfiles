@@ -115,6 +115,7 @@ nnoremap <leader>ez :e ~/.zshrc<cr>
 nnoremap <leader>eZ :e ~/.zshenv<cr>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
+nnoremap <leader>es :e ~/.ssh/config<cr>
 nnoremap <leader>en :FZF! ~/notes <CR>
 nnoremap <leader>eN :e ~/notes/
 nnoremap <leader>et :FZF! ~/todos <CR>
