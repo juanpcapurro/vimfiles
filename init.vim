@@ -20,7 +20,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'juanpcapurro/vim-logbook'
 Plug 'tpope/vim-fugitive'
-Plug 'juanpcapurro/vim-logbook'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'Valloric/MatchTagAlways'
@@ -28,8 +27,6 @@ Plug 'JulesWang/css.vim'
 " Language-specific plugins
 Plug 'lervag/vimtex'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'ternjs/tern_for_vim'
-" Plug 'flowtype/vim-flow',{'do': 'npm i -g flow-bin'}
 Plug 'curist/vim-angular-template'
 "Plug 'Glench/Vim-Jinja2-Syntax'
 " Beautifully simple plugins
@@ -148,10 +145,7 @@ let g:airline#extensions#hunks#enabled = 0
 "specific commands by filetype
 augroup javascriptcommands
     autocmd!
-    autocmd BufEnter *.js,*.jsx setlocal omnifunc=tern#Complete
     autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :TernDef<CR>
-    "autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :FlowJumpToDef<CR>
 augroup END
 augroup python
     autocmd!
