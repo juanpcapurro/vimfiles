@@ -11,14 +11,12 @@ call plug#begin('~/.config/nvim/plugged_all')
 Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
 Plug 'w0rp/ale',{'branch': 'master'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'scrooloose/nerdtree'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 Plug 'airblade/vim-gitgutter'
 " Simple plugins
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'juanpcapurro/vim-logbook'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
@@ -49,9 +47,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-
 let g:tagbar_autoclose= 1
-
 "YCM
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -96,40 +92,14 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 "vimtex
 let g:vimtex_view_general_viewer='zathura'
 
-"vim-markdown by plasticboy (via polyglot)
-let g:vim_markdown_new_list_item_indent=0
-let g:vim_markdown_auto_insert_bullets=0
-
 "other plugins
 let g:instant_markdown_autostart = 0
 let g:polyglot_disabled= ['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeQuitOnOpen=1
-" let g:flow#showquickfix = 0
-" let g:flow#showquickfix = 0
-" let g:javascript_plugin_flow = 0
 let g:used_javascript_libs = 'angular'
 
 "Visual settings
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background': 1
-  \     }
-  \   },
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     },
-  \     'cpp': {
-  \       'highlight_standard_library': 1
-  \     },
-  \     'c': {
-  \       'highlight_builtins' : 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 let g:airline_theme='minimalist'
@@ -167,4 +137,3 @@ nnoremap =g :GitGutterUndoHunk<cr>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
