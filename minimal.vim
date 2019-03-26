@@ -142,7 +142,6 @@ nnoremap <leader>eT :e ~/todos/
 inoremap jk <esc>
 
 " Lists and timestamps
-nnoremap <leader>t :Ts <cr>a
 nnoremap <leader>i o- [  ] 
 nnoremap <leader>I O- [  ] 
 nnoremap <leader><leader>i o<tab>- [  ] 
@@ -173,6 +172,7 @@ augroup markdown
     autocmd BufEnter *.md nnoremap <buffer> <leader>pb i```<cr>```<esc>kp
     autocmd BufEnter *.md nnoremap <buffer> <leader>pB i```<cr>```<esc>k"+p
     autocmd BufEnter *.md nnoremap <buffer> <leader>d 0f]hix<esc>
+    autocmd BufEnter *.md nnoremap <buffer> <leader>t :Ts <cr>a
     autocmd BufEnter *.md setlocal tabstop=4
     autocmd BufEnter *.md setlocal shiftwidth=4
     autocmd BufEnter *.md setlocal softtabstop=4
