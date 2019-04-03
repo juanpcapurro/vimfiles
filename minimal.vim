@@ -192,6 +192,12 @@ augroup ccppcommands
     autocmd BufEnter *.cpp,*.c,*.h let g:gutentags_enabled=1
 augroup END
 
+augroup sentcommands
+  autocmd!
+  autocmd BufEnter *.sent setlocal textwidth=45
+  autocmd BufEnter *.sent setlocal colorcolumn=45
+augroup END
+
 augroup othercfgs
     autocmd!
     autocmd VimEnter * echo ">^.^<"
