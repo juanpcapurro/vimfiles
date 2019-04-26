@@ -103,10 +103,8 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
-let g:instant_markdown_autostart = 0
 let g:polyglot_disabled= ['latex']
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let NERDTreeQuitOnOpen=1
 let g:used_javascript_libs = 'angular'
 
 "Visual settings
@@ -140,8 +138,7 @@ nnoremap <leader>p :Files<cr>
 nnoremap <leader>T :BTags<cr>
 nnoremap <leader>m :FZFMru<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :NERDTreeToggle<cr>
-nnoremap <leader>d :TagbarToggle<cr>
+nnoremap <leader>f :TagbarToggle<cr>
 
 
 

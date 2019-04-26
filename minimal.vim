@@ -146,6 +146,7 @@ nnoremap <leader>i o- [  ]
 nnoremap <leader>I O- [  ] 
 nnoremap <leader><leader>i o<tab>- [  ] 
 nnoremap <leader><leader>I O<tab>- [  ] 
+nnoremap <leader>d 0f]hix<esc>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -171,7 +172,6 @@ augroup markdown
     autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
     autocmd BufEnter *.md nnoremap <buffer> <leader>pb i```<cr>```<esc>kp
     autocmd BufEnter *.md nnoremap <buffer> <leader>pB i```<cr>```<esc>k"+p
-    autocmd BufEnter *.md nnoremap <buffer> <leader>d 0f]hix<esc>
     autocmd BufEnter *.md nnoremap <buffer> <leader>t :Ts <cr>a
     autocmd BufEnter *.md setlocal tabstop=4
     autocmd BufEnter *.md setlocal shiftwidth=4
