@@ -8,7 +8,7 @@ so ~/.config/nvim/minimal.vim
 
 call plug#begin('~/.config/nvim/plugged_all')
 " Heavy plugins
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --system-libclang --clang-completer' }
+Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer --java-completer --ts-completer' }
 Plug 'w0rp/ale',{'branch': 'master'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug '~/.fzf'
@@ -49,6 +49,16 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:tagbar_autoclose= 1
+let g:tagbar_type_solidity = {                                                  
+    \ 'ctagstype': 'solidity',                                                  
+    \ 'kinds' : [                                                               
+        \ 'c:contracts',                                                        
+        \ 'e:events',                                                           
+        \ 'f:functions',                                                        
+        \ 'm:mappings',                                                         
+        \ 'v:varialbes',                                                        
+    \ ]                                                                         
+\ }
 "YCM
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -66,6 +76,7 @@ let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 "vim-gutengags
 let g:gutentags_enabled=1
 let g:gutentags_project_root=['.git','.vimproject']
+let g:gutentags_ctags_executable='ctags'
 
 " ALE
 let g:ale_linters = {
@@ -73,6 +84,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'java': [],
 \   'c': ['cpplint', 'cppcheck'],
+\   'solidity': ['solium'],
 \   'cpp': ['cpplint', 'cppcheck']
 \}
 let g:ale_fixers = {
@@ -80,9 +92,6 @@ let g:ale_fixers = {
 \   'css': ['stylelint'],
 \   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
 \}
-nnoremap ]a :ALENext<CR>
-nnoremap [a :ALEPrevious<CR>
-nnoremap =a :ALEFix<CR>
 let g:ale_set_loclist  = 0
 let g:ale_set_quickfix = 0
 
@@ -117,6 +126,8 @@ let g:airline#extensions#hunks#enabled = 0
 augroup javascriptcommands
     autocmd!
     autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
+    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :YcmCompleter GoToDefinition<cr>
+    autocmd BufEnter *.js,*.jsx nnoremap <buffer> gh :YcmCompleter GetDoc <cr>
 augroup END
 augroup python
     autocmd!
@@ -132,9 +143,15 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :NERDTreeToggle<cr>
 nnoremap <leader>d :TagbarToggle<cr>
 
+
+
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
 nnoremap =g :GitGutterUndoHunk<cr>
+
+nnoremap ]a :ALENext<CR>
+nnoremap [a :ALEPrevious<CR>
+nnoremap =a :ALEFix<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
