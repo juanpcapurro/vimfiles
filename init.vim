@@ -27,7 +27,7 @@ Plug 'JulesWang/css.vim'
 Plug 'lervag/vimtex'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'curist/vim-angular-template'
-"Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'Glench/Vim-Jinja2-Syntax'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'majutsushi/tagbar'
