@@ -154,15 +154,21 @@ cmap w!! w !sudo tee > /dev/null %
 " I used to use vim-logbook, but copy-pasting feels better
 " Open today's logbook in the current buffer
 function! OpenLogbook()
-	let logfile = "~/logbook/" . strftime("%F") . ".md"
-	execute "edit " . logfile
+  let logfile = "~/logbook/" . strftime("%F") . ".md"
+  execute "edit " . logfile
+endfunction
+" Open today's time log in the current buffer
+function! OpenTimelog()
+  let logfile = "~/timelog/" . strftime("%F")
+  execute "edit " . logfile
 endfunction
 " Insert a timestamp under the cursor
 function! WriteTimestamp()
-	execute "normal! o\<esc>0i" . strftime("%c") . "\n- [  ] "
+  execute "normal! o\<esc>0i" . strftime("%c") . "\n- [  ] "
 endfunction
-" Open today's logbook in the current buffer
+
 command! -nargs=0 Lb call OpenLogbook()
+command! -nargs=0 Lt call OpenTimelog()
 command! -nargs=0 Ts call WriteTimestamp()
 
 augroup markdown
