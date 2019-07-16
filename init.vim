@@ -133,15 +133,6 @@ augroup python
     "autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
 augroup END
 
-nnoremap <leader>t :Tags<cr>
-nnoremap <leader>p :Files<cr>
-nnoremap <leader>T :BTags<cr>
-nnoremap <leader>m :FZFMru<cr>
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :TagbarToggle<cr>
-
-
-
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
 nnoremap =g :GitGutterUndoHunk<cr>

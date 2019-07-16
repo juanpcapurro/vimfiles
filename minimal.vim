@@ -83,7 +83,7 @@ filetype plugin on
 
 "autoloading: 
 set autoread
-set updatetime=2000
+set updatetime=800
 
 set wildmenu
 set incsearch
@@ -140,6 +140,15 @@ nnoremap <leader>eN :e ~/notes/
 nnoremap <leader>et :FZF! ~/todos <CR>
 nnoremap <leader>eT :e ~/todos/
 inoremap jk <esc>
+
+
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>T :BTags<cr>
+nnoremap <leader>m :FZFMru<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :TagbarToggle<cr>
+nnoremap <leader>a :Ag<cr>
 
 " Lists and timestamps
 nnoremap <leader>i o- [  ] 
