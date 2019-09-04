@@ -199,12 +199,16 @@ augroup latexcommands
     autocmd BufEnter *.tex setlocal spelllang=es
 augroup END
 
+augroup soliditycommands
+    autocmd!
+    autocmd BufEnter *.sol setlocal makeprg=truffle\ compile\ --all\ \\\|sed\ -e\ 's/^[^,].*$//'\ -e\ 's/^,//'
+augroup END
+
 augroup ccppcommands
     autocmd!
     autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=2
     autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=2
     autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=2
-    autocmd BufEnter *.cpp,*.c,*.h let g:gutentags_enabled=1
 augroup END
 
 augroup sentcommands
