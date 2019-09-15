@@ -135,6 +135,8 @@ nnoremap <leader>eZ :e ~/.zshenv<cr>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
 nnoremap <leader>es :e ~/.ssh/config<cr>
+nnoremap <leader>eq :e ~/.config/qutebrowser/config.py<cr>
+nnoremap <leader>ex :e ~/.config/sxhkd/sxhkdrc<cr>
 nnoremap <leader>en :FZF! ~/notes <CR>
 nnoremap <leader>eN :e ~/notes/
 nnoremap <leader>et :FZF! ~/todos <CR>
