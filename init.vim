@@ -1,33 +1,19 @@
-"Capurro's vimrc
+"Capurro's minimal vimrc
 " Load vim-plug
 if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
     execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-so ~/.config/nvim/minimal.vim
-
-call plug#begin('~/.config/nvim/plugged_all')
-" Heavy plugins
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer --java-completer --ts-completer' }
-Plug 'w0rp/ale',{'branch': 'master'}
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+call plug#begin('~/.config/nvim/plugged_minimal')
+" Heavy-esque plugins
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
-Plug 'airblade/vim-gitgutter'
 " Simple plugins
-Plug 'ap/vim-css-color'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'JulesWang/css.vim'
-" Language-specific plugins
-Plug 'lervag/vimtex'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'curist/vim-angular-template'
-Plug 'Glench/Vim-Jinja2-Syntax'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'majutsushi/tagbar'
@@ -44,102 +30,216 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Visual plugins
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-let g:tagbar_autoclose= 1
-let g:tagbar_type_solidity = {                                                  
-    \ 'ctagstype': 'solidity',                                                  
-    \ 'kinds' : [                                                               
-        \ 'c:contracts',                                                        
-        \ 'e:events',                                                           
-        \ 'f:functions',                                                        
-        \ 'm:mappings',                                                         
-        \ 'v:varialbes',                                                        
-    \ ]                                                                         
-\ }
-"YCM
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_key_detailed_diagnostics = '<leader>D'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_specific_completion_to_disable = {
-\     'gitcommit': 1
-\   }
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   },
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
+"vim-markdown by plasticboy (via polyglot)
+let g:vim_markdown_new_list_item_indent=0
+let g:vim_markdown_auto_insert_bullets=0
+" netrw file browsing
+let g:netrw_liststyle = 3
 
-"vim-gutengags
-let g:gutentags_enabled=1
-let g:gutentags_project_root=['.git','.vimproject']
-let g:gutentags_ctags_executable='ctags'
+set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
+"grepping
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
+set grepformat=%f:%l:%c:%m
+set path+=**
 
-" ALE
-let g:ale_linters = {
-\   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
-\   'python': ['flake8'],
-\   'java': [],
-\   'c': ['cpplint', 'cppcheck'],
-\   'solidity': ['solium'],
-\   'cpp': ['cpplint', 'cppcheck']
-\}
-let g:ale_fixers = {
-\   'python': ['autopep8'],
-\   'css': ['stylelint'],
-\   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
-\}
-let g:ale_set_loclist  = 0
-let g:ale_set_quickfix = 0
+let mapleader = ";"
+let localleader = ";"
+set wrap lbr
+set lazyredraw
+set relativenumber
+set number
+set numberwidth=1
+set foldmethod=indent
+set foldlevelstart=99
+set mouse=a
+set noswapfile
+set splitbelow
+set splitright
+set diffopt+=vertical
+syntax on 
+filetype indent on
+filetype plugin on 
 
-"rainbow-parentheses
-let g:rainbow#max_level = 16
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+"autoloading: 
+set autoread
+set updatetime=800
 
-"vimtex
-let g:vimtex_view_general_viewer='zathura'
+set wildmenu
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+set background=dark
+set cursorline
+set undofile
+set undodir=~/.config/nvim/undo_history
+set autowriteall
+set clipboard=unnamed
 
-"other plugins
-let g:polyglot_disabled= ['latex']
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let g:used_javascript_libs = 'angular'
+set listchars=tab:>-,space:·
+set list
 
-"Visual settings
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
-let g:airline_theme='minimalist'
-let g:airline_section_b = ''
-let g:airline_section_y = ''
-let g:airline_section_x = ''
-let g:airline_section_warning = ''
-let g:airline_section_error = ''
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
+"Indenting
+set smartindent
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
-"specific commands by filetype
-augroup javascriptcommands
+" MAPPINGS
+"spellcheck
+nnoremap zs 1z=]s
+"visual    navigation
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap gV `[v`]
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+
+" Yank things into things
+nmap <leader>yf :let @* = expand("%")<cr>
+nmap <leader>yF :let @* = expand("%:p")<cr>
+
+map <leader>* *:%s///gn<CR>
+nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
+nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sV :source ~/.config/nvim/fat.vim<cr>
+nnoremap <leader>ez :e ~/.zshrc<cr>
+nnoremap <leader>eZ :e ~/.zshenv<cr>
+nnoremap <leader>ei :e ~/.config/i3/config<cr>
+nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
+nnoremap <leader>es :e ~/.ssh/config<cr>
+nnoremap <leader>eq :e ~/.config/qutebrowser/config.py<cr>
+nnoremap <leader>ex :e ~/.config/sxhkd/sxhkdrc<cr>
+nnoremap <leader>en :FZF! ~/notes <CR>
+nnoremap <leader>eN :e ~/notes/
+nnoremap <leader>et :FZF! ~/todos <CR>
+nnoremap <leader>eT :e ~/todos/
+inoremap jk <esc>
+
+
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>T :BTags<cr>
+nnoremap <leader>m :FZFMru<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :TagbarToggle<cr>
+nnoremap <leader>a :Ag<cr>
+
+" Lists and timestamps
+nnoremap <leader>i o- [  ] 
+nnoremap <leader>I O- [  ] 
+nnoremap <leader><leader>i o<tab>- [  ] 
+nnoremap <leader><leader>I O<tab>- [  ] 
+nnoremap <leader>d 0f]hix<esc>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+" I used to use vim-logbook, but copy-pasting feels better
+" Open today's logbook in the current buffer
+function! OpenLogbook()
+  let logfile = "~/logbook/" . strftime("%F") . ".md"
+  execute "edit " . logfile
+endfunction
+" Open today's time log in the current buffer
+function! OpenTimelog()
+  let logfile = "~/timelog/" . strftime("%F")
+  execute "edit " . logfile
+endfunction
+" Insert a timestamp under the cursor
+function! WriteTimestamp()
+  execute "normal! o\<esc>0i" . strftime("%c") . "\n- [  ] "
+endfunction
+
+command! -nargs=0 Lb call OpenLogbook()
+command! -nargs=0 Lt call OpenTimelog()
+command! -nargs=0 Ts call WriteTimestamp()
+
+augroup markdown
     autocmd!
-    autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :YcmCompleter GoToDefinition<cr>
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> gh :YcmCompleter GetDoc <cr>
+    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal nocursorline
+    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spell
+    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
+    autocmd BufEnter *.md nnoremap <buffer> <leader>pb i```<cr>```<esc>kp
+    autocmd BufEnter *.md nnoremap <buffer> <leader>pB i```<cr>```<esc>k"+p
+    autocmd BufEnter *.md nnoremap <buffer> <leader>t :Ts <cr>a
+    autocmd BufEnter *.md setlocal tabstop=4
+    autocmd BufEnter *.md setlocal shiftwidth=4
+    autocmd BufEnter *.md setlocal softtabstop=4
 augroup END
-augroup python
+
+augroup latexcommands
     autocmd!
-    autocmd BufEnter *.py setlocal foldmethod=indent
-    "autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
+    autocmd BufEnter *.tex setlocal spell
+    autocmd BufEnter *.tex setlocal spelllang=es
 augroup END
 
-nnoremap ]g :GitGutterNextHunk<cr>
-nnoremap [g :GitGutterPrevHunk<cr>
-nnoremap =g :GitGutterUndoHunk<cr>
+augroup ccppcommands
+    autocmd!
+    autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=2
+    autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=2
+    autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=2
+    autocmd BufEnter *.cpp,*.c,*.h let g:gutentags_enabled=1
+augroup END
 
-nnoremap ]a :ALENext<CR>
-nnoremap [a :ALEPrevious<CR>
-nnoremap =a :ALEFix<CR>
+augroup soliditycommands
+    autocmd!
+    autocmd BufEnter *.sol setlocal makeprg=truffle\ compile\ --all\ \\\|sed\ -e\ 's/^[^,].*$//'\ -e\ 's/^,//'
+augroup END
 
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+augroup sentcommands
+  autocmd!
+  autocmd BufEnter *.sent setlocal textwidth=45
+  autocmd BufEnter *.sent setlocal colorcolumn=45
+augroup END
+
+augroup othercfgs
+    autocmd!
+    autocmd VimEnter * echo ">^.^<"
+    autocmd VimEnter * RainbowParentheses
+    autocmd FocusLost,InsertLeave,WinLeave,BufLeave,TabLeave * silent! wa
+    autocmd CursorHold,CursorHoldI * silent! checktime
+    autocmd CursorHold,CursorHoldI * silent! wa
+    autocmd FocusGained,BufEnter * silent! checktime
+    autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
+augroup END
+
+iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
+iabbrev :sparkle: ✨
+iabbrev :upsidedown: 🙃
+iabbrev :catsmile: 😺
+iabbrev :lewd: 😏
+iabbrev :sob: 😭
+iabbrev :think: 🤔
+iabbrev :shrug: ¯\\_(ツ)_/¯
+iabbrev :wink: 😉
+
+"Source a project-specific vimrc, if it exists
+silent! so .vimlocal
