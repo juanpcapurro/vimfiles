@@ -57,11 +57,12 @@ let g:vim_markdown_auto_insert_bullets=0
 " netrw file browsing
 let g:netrw_liststyle = 3
 
-set wildignore+=*.class,.git,.hg,.svn,target/**,*.o,*.pdf,plugged,tags*,*.make
+set wildignore+=*.class,.git,.hg,.svn,target,*.o,*.pdf,plugged,tags,*.make,node_modules,internals
 "grepping
 set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
 set grepformat=%f:%l:%c:%m
 set path+=**
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 let mapleader = ";"
 let localleader = ";"
@@ -175,7 +176,7 @@ function! OpenTimelog()
 endfunction
 " Insert a timestamp under the cursor
 function! WriteTimestamp()
-  execute "normal! o\<esc>0i" . strftime("%c") . "\n- [  ] "
+  execute "normal! o\<esc>0i" . strftime("%c") . "\n"
 endfunction
 
 command! -nargs=0 Lb call OpenLogbook()
@@ -193,6 +194,7 @@ augroup markdown
     autocmd BufEnter *.md setlocal tabstop=4
     autocmd BufEnter *.md setlocal shiftwidth=4
     autocmd BufEnter *.md setlocal softtabstop=4
+    autocmd BufEnter *.md setlocal textwidth=80
 augroup END
 
 augroup latexcommands
@@ -211,7 +213,7 @@ augroup END
 
 augroup soliditycommands
     autocmd!
-    autocmd BufEnter *.sol setlocal makeprg=truffle\ compile\ --all\ \\\|sed\ -e\ 's/^[^,].*$//'\ -e\ 's/^,//'
+    autocmd BufEnter *.sol setlocal makeprg=truffle\ compile\ --all\ \\\|grep\ -P\ '(?<=\ )/.*$'
 augroup END
 
 augroup sentcommands

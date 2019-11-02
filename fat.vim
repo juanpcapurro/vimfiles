@@ -25,6 +25,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'JulesWang/css.vim'
 " Language-specific plugins
 Plug 'lervag/vimtex'
+Plug 'flowtype/vim-flow'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'curist/vim-angular-template'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -80,7 +81,7 @@ let g:gutentags_ctags_executable='ctags'
 
 " ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
+\   'javascript': ['eslint', 'prettier_eslint', 'importjs', 'flow'],
 \   'python': ['flake8'],
 \   'java': [],
 \   'c': ['cpplint', 'cppcheck'],
@@ -90,6 +91,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'css': ['stylelint'],
+\   'scss': ['stylelint'],
 \   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
 \}
 let g:ale_set_loclist  = 0
@@ -103,8 +105,10 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:vimtex_view_general_viewer='zathura'
 
 "other plugins
+let g:flow#showquickfix = 0
+let g:flow#enable = 0
+let g:javascript_plugin_flow = 1
 let g:polyglot_disabled= ['latex']
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:used_javascript_libs = 'angular'
 
 "Visual settings
