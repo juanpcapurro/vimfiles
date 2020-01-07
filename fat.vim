@@ -8,9 +8,7 @@ so ~/.config/nvim/init.vim
 
 call plug#begin('~/.config/nvim/plugged_all')
 " Heavy plugins
-Plug 'Valloric/YouCompleteMe',{'do': './install.py --clang-completer --java-completer --ts-completer' }
 Plug 'w0rp/ale',{'branch': 'master'}
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
@@ -60,19 +58,6 @@ let g:tagbar_type_solidity = {
         \ 'v:varialbes',                                                        
     \ ]                                                                         
 \ }
-"YCM
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_key_detailed_diagnostics = '<leader>D'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_specific_completion_to_disable = {
-\     'gitcommit': 1
-\   }
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "vim-gutengags
 let g:gutentags_enabled=1
@@ -128,13 +113,10 @@ let g:airline#extensions#hunks#enabled = 0
 augroup javascriptcommands
     autocmd!
     autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> <C-]> :YcmCompleter GoToDefinition<cr>
-    autocmd BufEnter *.js,*.jsx nnoremap <buffer> gh :YcmCompleter GetDoc <cr>
 augroup END
 augroup python
     autocmd!
     autocmd BufEnter *.py setlocal foldmethod=indent
-    "autocmd BufEnter *.py nnoremap <buffer> <C-]> :YcmCompleter GoTo<CR>
 augroup END
 
 nnoremap ]g :GitGutterNextHunk<cr>
