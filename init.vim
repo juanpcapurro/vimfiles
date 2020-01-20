@@ -123,8 +123,8 @@ nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
 " Yank things into things
-nmap <leader>yf :let @* = expand("%")<cr>
-nmap <leader>yF :let @* = expand("%:p")<cr>
+nnoremap <leader>yf :let @* = expand("%")<cr>
+nnoremap <leader>yF :let @* = expand("%:p")<cr>
 
 map <leader>* *:%s///gn<CR>
 nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
@@ -242,6 +242,10 @@ iabbrev :sob: 😭
 iabbrev :think: 🤔
 iabbrev :shrug: ¯\\_(ツ)_/¯
 iabbrev :wink: 😉
+
+iabbrev dsc describe('', () => {});<esc>2F'a
+iabbrev tst test('', () => {});<esc>2F'a
+iabbrev bfa beforeAll(() => {});<esc>F{a
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
