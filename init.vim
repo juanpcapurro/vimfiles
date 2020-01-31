@@ -160,6 +160,9 @@ nnoremap <leader><leader>i o<tab>- [  ]
 nnoremap <leader><leader>I O<tab>- [  ] 
 nnoremap <leader>d 0f]hix<esc>
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 

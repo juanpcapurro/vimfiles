@@ -126,6 +126,3 @@ nnoremap =g :GitGutterUndoHunk<cr>
 nnoremap ]a :ALENext<CR>
 nnoremap [a :ALEPrevious<CR>
 nnoremap =a :ALEFix<CR>
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
