@@ -100,6 +100,7 @@ set clipboard=unnamed
 
 set listchars=tab:>-,space:·
 set list
+set colorcolumn=100
 
 "Indenting
 set smartindent
@@ -197,7 +198,13 @@ augroup markdown
     autocmd BufEnter *.md setlocal tabstop=4
     autocmd BufEnter *.md setlocal shiftwidth=4
     autocmd BufEnter *.md setlocal softtabstop=4
-    autocmd BufEnter *.md setlocal textwidth=80
+augroup END
+
+augroup rst
+    autocmd!
+    autocmd BufEnter *.rst setlocal tabstop=4
+    autocmd BufEnter *.rst setlocal shiftwidth=4
+    autocmd BufEnter *.rst setlocal softtabstop=4
 augroup END
 
 augroup latexcommands
@@ -248,7 +255,9 @@ iabbrev :wink: 😉
 
 iabbrev dsc describe('', () => {});<esc>2F'a
 iabbrev tst test('', () => {});<esc>2F'a
+iabbrev itt it('', () => {});<esc>2F'a
 iabbrev bfa beforeAll(() => {});<esc>F{a
+iabbrev bff before(() => {});<esc>F{a
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal

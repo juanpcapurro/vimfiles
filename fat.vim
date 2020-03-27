@@ -67,6 +67,8 @@ let g:gutentags_ctags_executable='ctags'
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier_eslint', 'importjs', 'flow'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
 \   'python': ['flake8'],
 \   'java': [],
 \   'c': ['cpplint', 'cppcheck'],
@@ -77,6 +79,8 @@ let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'css': ['stylelint'],
 \   'scss': ['stylelint'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
 \   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
 \}
 let g:ale_set_loclist  = 0
