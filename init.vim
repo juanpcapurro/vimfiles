@@ -189,9 +189,6 @@ command! -nargs=0 Ts call WriteTimestamp()
 
 augroup markdown
     autocmd!
-    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal nocursorline
-    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spell
-    autocmd BufEnter *consulta.md,*respuesta.md,feedback.md setlocal spelllang=es
     autocmd BufEnter *.md nnoremap <buffer> <leader>pb i```<cr>```<esc>kp
     autocmd BufEnter *.md nnoremap <buffer> <leader>pB i```<cr>```<esc>k"+p
     autocmd BufEnter *.md nnoremap <buffer> <leader>t :Ts <cr>a
@@ -201,6 +198,13 @@ augroup markdown
 augroup END
 
 augroup rst
+    autocmd!
+    autocmd BufEnter *.rst setlocal tabstop=4
+    autocmd BufEnter *.rst setlocal shiftwidth=4
+    autocmd BufEnter *.rst setlocal softtabstop=4
+augroup END
+
+augroup restructuredtext
     autocmd!
     autocmd BufEnter *.rst setlocal tabstop=4
     autocmd BufEnter *.rst setlocal shiftwidth=4

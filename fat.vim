@@ -71,9 +71,9 @@ let g:ale_linters = {
 \   'typescriptreact': ['eslint'],
 \   'python': ['flake8'],
 \   'java': [],
-\   'c': ['cpplint', 'cppcheck'],
+\   'c': ['cpplint', 'cppcheck', 'gcc'],
 \   'solidity': ['solium'],
-\   'cpp': ['cpplint', 'cppcheck']
+\   'cpp': ['cpplint', 'cppcheck', 'gcc']
 \}
 let g:ale_fixers = {
 \   'python': ['autopep8'],
