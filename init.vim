@@ -84,7 +84,7 @@ filetype plugin on
 
 "autoloading: 
 set autoread
-set updatetime=800
+set updatetime=7800
 
 set wildmenu
 set incsearch
@@ -240,10 +240,9 @@ augroup othercfgs
     autocmd!
     autocmd VimEnter * echo ">^.^<"
     autocmd VimEnter * RainbowParentheses
-    autocmd FocusLost,InsertLeave,WinLeave,BufLeave,TabLeave * silent! wa
-    autocmd CursorHold,CursorHoldI * silent! checktime
-    autocmd CursorHold,CursorHoldI * silent! wa
-    autocmd FocusGained,BufEnter * silent! checktime
+    " If possible, save when losing/gaining focus and every updatetime
+    " seconds
+    autocmd CursorHold,CursorHoldI,FocusLost,FocusGained * silent! wa
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
