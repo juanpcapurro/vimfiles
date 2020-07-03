@@ -154,6 +154,13 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :TagbarToggle<cr>
 nnoremap <leader>a :Ag<cr>
 
+nnoremap <leader>gw :grep <cword><cr>
+nnoremap <leader>gW :grep '\b<cword>\b'<cr>
+nnoremap <leader>gf :grep <cfile><cr>
+
+" make heading?
+nnoremap <leader>hh yypVr
+
 " Lists and timestamps
 nnoremap <leader>i o- [  ] 
 nnoremap <leader>I O- [  ] 
