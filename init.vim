@@ -28,29 +28,8 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
-" Visual plugins
-Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
-colorscheme PaperColor
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background': 1
-  \     }
-  \   },
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     },
-  \     'cpp': {
-  \       'highlight_standard_library': 1
-  \     },
-  \     'c': {
-  \       'highlight_builtins' : 1
-  \     }
-  \   }
-  \ }
 "vim-markdown by plasticboy (via polyglot)
 let g:vim_markdown_new_list_item_indent=0
 let g:vim_markdown_auto_insert_bullets=0

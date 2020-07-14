@@ -42,21 +42,20 @@ Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Visual plugins
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:tagbar_autoclose= 1
-let g:tagbar_type_solidity = {                                                  
-    \ 'ctagstype': 'solidity',                                                  
-    \ 'kinds' : [                                                               
-        \ 'c:contracts',                                                        
-        \ 'e:events',                                                           
-        \ 'f:functions',                                                        
-        \ 'm:mappings',                                                         
-        \ 'v:varialbes',                                                        
-    \ ]                                                                         
+let g:tagbar_type_solidity = {
+    \ 'ctagstype': 'solidity',
+    \ 'kinds' : [
+        \ 'c:contracts',
+        \ 'e:events',
+        \ 'f:functions',
+        \ 'm:mappings',
+        \ 'v:varialbes',
+    \ ]
 \ }
 
 "vim-gutengags
