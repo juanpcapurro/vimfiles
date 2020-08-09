@@ -71,7 +71,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'java': [],
 \   'c': ['cpplint', 'cppcheck', 'gcc'],
-\   'solidity': ['solium'],
+\   'solidity': ['solium', 'solhint'],
 \   'cpp': ['cpplint', 'cppcheck', 'gcc']
 \}
 let g:ale_fixers = {
@@ -127,6 +127,8 @@ augroup python
     autocmd!
     autocmd BufEnter *.py setlocal foldmethod=indent
 augroup END
+
+nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>
 
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>

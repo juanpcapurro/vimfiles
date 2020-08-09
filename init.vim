@@ -27,7 +27,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/rainbow_parentheses.vim'
 call plug#end()
 
 "vim-markdown by plasticboy (via polyglot)
@@ -42,6 +41,8 @@ set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ign
 set grepformat=%f:%l:%c:%m
 set path+=**
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+colorscheme pablo
 
 let mapleader = ";"
 let localleader = ";"
@@ -110,7 +111,6 @@ map <leader>* *:%s///gn<CR>
 nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sV :source ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
 nnoremap <leader>eZ :e ~/.zshenv<cr>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
@@ -141,17 +141,21 @@ nnoremap <leader>gf :grep <cfile><cr>
 nnoremap <leader>hh yypVr
 
 " Lists and timestamps
-nnoremap <leader>i o- [  ] 
-nnoremap <leader>I O- [  ] 
-nnoremap <leader><leader>i o<tab>- [  ] 
-nnoremap <leader><leader>I O<tab>- [  ] 
-nnoremap <leader>d 0f]hix<esc>
+nnoremap <leader>i o- [ ] 
+nnoremap <leader>I O- [ ] 
+nnoremap <leader><leader>i o<tab>- [ ] 
+nnoremap <leader><leader>I O<tab>- [ ] 
+nnoremap <leader>d 0f]hrx
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
+" Allow saving of files with sudo when I forgot to start vim as root.
 cmap w!! w !sudo tee > /dev/null %
+
+nnoremap <leader>ww :w<cr>
+nnoremap <leader>wa :wa<cr>
+nnoremap <leader>wm :wa<cr>:make<cr>
 
 " I used to use vim-logbook, but copy-pasting feels better
 " Open today's logbook in the current buffer
@@ -175,26 +179,14 @@ command! -nargs=0 Ts call WriteTimestamp()
 
 augroup markdown
     autocmd!
-    autocmd BufEnter *.md nnoremap <buffer> <leader>pb i```<cr>```<esc>kp
-    autocmd BufEnter *.md nnoremap <buffer> <leader>pB i```<cr>```<esc>k"+p
     autocmd BufEnter *.md nnoremap <buffer> <leader>t :Ts <cr>a
-    autocmd BufEnter *.md setlocal tabstop=4
-    autocmd BufEnter *.md setlocal shiftwidth=4
-    autocmd BufEnter *.md setlocal softtabstop=4
 augroup END
 
-augroup rst
+augroup plaintext
     autocmd!
-    autocmd BufEnter *.rst setlocal tabstop=4
-    autocmd BufEnter *.rst setlocal shiftwidth=4
-    autocmd BufEnter *.rst setlocal softtabstop=4
-augroup END
-
-augroup restructuredtext
-    autocmd!
-    autocmd BufEnter *.rst setlocal tabstop=4
-    autocmd BufEnter *.rst setlocal shiftwidth=4
-    autocmd BufEnter *.rst setlocal softtabstop=4
+    autocmd Filetype rst,email,markdown setlocal tabstop=4
+    autocmd Filetype rst,email,markdown setlocal shiftwidth=4
+    autocmd Filetype rst,email,markdown setlocal softtabstop=4
 augroup END
 
 augroup latexcommands
@@ -225,7 +217,6 @@ augroup END
 augroup othercfgs
     autocmd!
     autocmd VimEnter * echo ">^.^<"
-    autocmd VimEnter * RainbowParentheses
     " If possible, save when losing/gaining focus and every updatetime
     " seconds
     autocmd CursorHold,CursorHoldI,FocusLost,FocusGained * silent! wa
