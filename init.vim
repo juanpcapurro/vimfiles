@@ -6,7 +6,6 @@ endif
 
 call plug#begin('~/.config/nvim/plugged_minimal')
 " Heavy-esque plugins
-Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
@@ -28,6 +27,8 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
 call plug#end()
+
+so /usr/share/doc/fzf/examples/fzf.vim
 
 "vim-markdown by plasticboy (via polyglot)
 let g:vim_markdown_new_list_item_indent=0

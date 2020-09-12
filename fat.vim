@@ -9,7 +9,6 @@ so ~/.config/nvim/init.vim
 call plug#begin('~/.config/nvim/plugged_all')
 " Heavy plugins
 Plug 'w0rp/ale',{'branch': 'master'}
-Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 Plug 'airblade/vim-gitgutter'
