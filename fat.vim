@@ -43,6 +43,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 " Visual plugins
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'liuchengxu/space-vim-theme'
 call plug#end()
 
 let g:tagbar_autoclose= 1
@@ -64,11 +65,12 @@ let g:gutentags_ctags_executable='ctags'
 
 " ALE
 let g:ale_linters = {
-\   'javascript': ['eslint', 'prettier_eslint', 'importjs', 'flow'],
-\   'typescript': ['eslint'],
+\   'javascript': ['eslint', 'prettier_eslint', 'prettier', 'tsserver'],
+\   'typescript': ['eslint', 'tslint','tsserver'],
 \   'typescriptreact': ['eslint'],
 \   'python': ['flake8'],
 \   'java': [],
+\   'html': ['prettier'],
 \   'c': ['cpplint', 'cppcheck', 'gcc'],
 \   'solidity': ['solium', 'solhint'],
 \   'cpp': ['cpplint', 'cppcheck', 'gcc']
@@ -77,9 +79,10 @@ let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'css': ['stylelint'],
 \   'scss': ['stylelint'],
-\   'typescript': ['eslint'],
+\   'typescript': ['eslint','tslint'],
+\   'html': ['prettier'],
 \   'typescriptreact': ['eslint'],
-\   'javascript': ['eslint', 'prettier_eslint', 'importjs'],
+\   'javascript': ['eslint', 'prettier_eslint', 'prettier'],
 \}
 let g:ale_set_loclist  = 0
 let g:ale_set_quickfix = 0
@@ -125,6 +128,10 @@ augroup END
 augroup python
     autocmd!
     autocmd BufEnter *.py setlocal foldmethod=indent
+augroup END
+augroup typescript
+    autocmd!
+    autocmd BufEnter *.ts nnoremap <buffer> <C-]> :ALEGoToDefinition<cr>
 augroup END
 
 nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>

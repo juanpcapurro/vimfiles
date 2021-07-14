@@ -26,6 +26,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
+" Visual plugins
+Plug 'liuchengxu/space-vim-theme'
 call plug#end()
 
 so /usr/share/doc/fzf/examples/fzf.vim
@@ -43,7 +45,9 @@ set grepformat=%f:%l:%c:%m
 set path+=**
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-colorscheme pablo
+colorscheme space_vim_theme
+
+set termguicolors
 
 let mapleader = ";"
 let localleader = ";"
@@ -70,7 +74,6 @@ set updatetime=7800
 set wildmenu
 set incsearch
 set ignorecase
-set smartcase
 set hlsearch
 set background=dark
 set cursorline
@@ -114,6 +117,7 @@ nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
 nnoremap <leader>eZ :e ~/.zshenv<cr>
+nnoremap <leader>er :e ~/.config/newsboat/urls<CR>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
 nnoremap <leader>es :e ~/.ssh/config<cr>
@@ -140,6 +144,8 @@ nnoremap <leader>gf :grep <cfile><cr>
 
 " make heading?
 nnoremap <leader>hh yypVr
+
+nnoremap <leader>c yypV!bc -l<cr>
 
 " Lists and timestamps
 nnoremap <leader>i o- [ ] 
@@ -215,6 +221,12 @@ augroup sentcommands
   autocmd BufEnter *.sent setlocal colorcolumn=45
 augroup END
 
+augroup tweetcommands
+  autocmd!
+  autocmd BufEnter tweetlater.md setlocal textwidth=280
+  autocmd BufEnter tweetlater.md setlocal colorcolumn=280
+augroup END
+
 augroup othercfgs
     autocmd!
     autocmd VimEnter * echo ">^.^<"
@@ -224,7 +236,7 @@ augroup othercfgs
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
-iabbrev ssig <cr>---<cr>Saludos, Juan Pablo `>^.^<`.
+iabbrev ssig <cr>---<cr>Saludos, Capu `>^.^<`.
 iabbrev :sparkle: ✨
 iabbrev :upsidedown: 🙃
 iabbrev :catsmile: 😺
@@ -235,10 +247,10 @@ iabbrev :shrug: ¯\\_(ツ)_/¯
 iabbrev :wink: 😉
 
 iabbrev dsc describe('', () => {});<esc>2F'a
-iabbrev tst test('', () => {});<esc>2F'a
-iabbrev itt it('', () => {});<esc>2F'a
-iabbrev bfa beforeAll(() => {});<esc>F{a
-iabbrev bff before(() => {});<esc>F{a
+iabbrev tst test('', async() => {});<esc>2F'a
+iabbrev itt it('', async() => {});<esc>2F'a
+iabbrev bfa beforeAll(async() => {});<esc>F{a
+iabbrev bff before(async() => {});<esc>F{a
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
