@@ -11,6 +11,8 @@ call plug#begin('~/.config/nvim/plugged_all')
 Plug 'w0rp/ale',{'branch': 'master'}
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 " Simple plugins
 Plug 'ap/vim-css-color'
@@ -46,6 +48,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-theme'
 call plug#end()
 
+" tagbar
 let g:tagbar_autoclose= 1
 let g:tagbar_type_solidity = {
     \ 'ctagstype': 'solidity',
@@ -58,7 +61,10 @@ let g:tagbar_type_solidity = {
     \ ]
 \ }
 
-"vim-gutengags
+" UltiSnips
+let g:UltiSnipsEditSplit="vertical"
+
+" vim-gutengags
 let g:gutentags_enabled=1
 let g:gutentags_project_root=['.git','.vimproject']
 let g:gutentags_ctags_executable='ctags'

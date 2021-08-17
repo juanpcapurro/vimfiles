@@ -1,0 +1,20 @@
+extends rst
+priority -49
+
+global !p
+from vimsnippets import display_width
+endglobal
+
+snippet post "blogpost start" b
+`!p snip.rv = display_width(t[1])*'#'`
+${1}
+`!p snip.rv = display_width(t[1])*'#'`
+:date: `!v strftime("%Y-%m-%d")`
+:summary: ${2}
+:tags: ${3}
+:author: capu
+:featured_image:
+
+$0
+endsnippet
+
