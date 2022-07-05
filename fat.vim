@@ -15,24 +15,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 " Simple plugins
-Plug 'ap/vim-css-color'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'Valloric/MatchTagAlways'
-Plug 'JulesWang/css.vim'
-" Language-specific plugins
-Plug 'lervag/vimtex'
-Plug 'flowtype/vim-flow'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'curist/vim-angular-template'
-Plug 'Glench/Vim-Jinja2-Syntax'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
@@ -48,42 +38,25 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-theme'
 call plug#end()
 
-" tagbar
-let g:tagbar_autoclose= 1
-let g:tagbar_type_solidity = {
-    \ 'ctagstype': 'solidity',
-    \ 'kinds' : [
-        \ 'c:contracts',
-        \ 'e:events',
-        \ 'f:functions',
-        \ 'm:mappings',
-        \ 'v:varialbes',
-    \ ]
-\ }
-
 " UltiSnips
 let g:UltiSnipsEditSplit="vertical"
-
-" vim-gutengags
-let g:gutentags_enabled=1
-let g:gutentags_project_root=['.git','.vimproject']
-let g:gutentags_ctags_executable='ctags'
 
 " ALE
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier_eslint', 'prettier', 'tsserver'],
-\   'typescript': ['eslint', 'tslint','tsserver'],
+\   'typescript': ['eslint', 'tsserver'],
 \   'typescriptreact': ['eslint'],
 \   'python': ['flake8'],
 \   'java': [],
 \   'html': ['prettier'],
 \   'c': ['cpplint', 'cppcheck', 'gcc'],
-\   'solidity': ['solium', 'solhint'],
+\   'solidity': ['solhint'],
 \   'cpp': ['cpplint', 'cppcheck', 'gcc']
 \}
 let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'css': ['stylelint'],
+\   'solidity': ['prettier'],
 \   'scss': ['stylelint'],
 \   'typescript': ['eslint','tslint'],
 \   'html': ['prettier'],
@@ -98,20 +71,6 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_filetype_changed = 1
-
-"rainbow-parentheses
-let g:rainbow#max_level = 16
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-
-"vimtex
-let g:vimtex_view_general_viewer='zathura'
-
-"other plugins
-let g:flow#showquickfix = 0
-let g:flow#enable = 0
-let g:javascript_plugin_flow = 1
-let g:polyglot_disabled= ['latex']
-let g:used_javascript_libs = 'angular'
 
 "Visual settings
 let g:airline#extensions#tabline#enabled = 1

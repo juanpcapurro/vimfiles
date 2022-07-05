@@ -11,13 +11,9 @@ Plug 'pbogut/fzf-mru.vim'
 " Simple plugins
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'Valloric/MatchTagAlways'
-Plug 'JulesWang/css.vim'
 " Beautifully simple plugins
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'majutsushi/tagbar'
 Plug 'milkypostman/vim-togglelist'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
@@ -38,11 +34,10 @@ let g:vim_markdown_auto_insert_bullets=0
 " netrw file browsing
 let g:netrw_liststyle = 3
 
-set wildignore+=*.class,.git,.hg,.svn,target,*.o,*.pdf,plugged,tags,*.make,node_modules,internals
+set wildignore+=*.class,.git,.hg,.svn,target,*.o,*.pdf,plugged,tags,*.make,node_modules,internals,abi
 "grepping
 set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
 set grepformat=%f:%l:%c:%m
-set path+=**
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 colorscheme space_vim_theme
@@ -74,6 +69,7 @@ set updatetime=7800
 set wildmenu
 set incsearch
 set ignorecase
+set smartcase
 set hlsearch
 set background=dark
 set cursorline
@@ -102,10 +98,25 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 nnoremap gV `[v`]
+nnoremap <C-h> <C-w> h
+nnoremap <C-j> <C-w> j
+nnoremap <C-k> <C-w> k
+nnoremap <C-l> <C-w> l
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
+
+" resolve files inside node_modules
+set suffixesadd+=.js,.jsx,.sol
+
+function! LoadMainNodeModule(fname)
+  return "./node_modules/" . a:fname
+endfunction
+
+set isfname+=@-@
+
+set includeexpr=LoadMainNodeModule(v:fname)
 
 " Yank things into things
 nnoremap <leader>yf :let @* = expand("%")<cr>
@@ -135,7 +146,6 @@ nnoremap <leader>p :Files<cr>
 nnoremap <leader>T :BTags<cr>
 nnoremap <leader>m :FZFMru<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :TagbarToggle<cr>
 nnoremap <leader>a :Ag<cr>
 
 nnoremap <leader>gw :grep <cword><cr>
@@ -196,23 +206,9 @@ augroup plaintext
     autocmd Filetype rst,email,markdown setlocal softtabstop=4
 augroup END
 
-augroup latexcommands
+augroup pythoncommands
     autocmd!
-    autocmd BufEnter *.tex setlocal spell
-    autocmd BufEnter *.tex setlocal spelllang=es
-augroup END
-
-augroup ccppcommands
-    autocmd!
-    autocmd BufEnter *.cpp,*.c,*.h setlocal tabstop=2
-    autocmd BufEnter *.cpp,*.c,*.h setlocal shiftwidth=2
-    autocmd BufEnter *.cpp,*.c,*.h setlocal softtabstop=2
-    autocmd BufEnter *.cpp,*.c,*.h let g:gutentags_enabled=1
-augroup END
-
-augroup soliditycommands
-    autocmd!
-    autocmd BufEnter *.sol setlocal makeprg=truffle\ compile\ --all\ \\\|grep\ -P\ '(?<=\ )/.*$'
+    autocmd BufEnter *.py setlocal keywordprg=pydoc
 augroup END
 
 augroup sentcommands
@@ -236,7 +232,7 @@ augroup othercfgs
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
 augroup END
 
-iabbrev ssig <cr>---<cr>Saludos, Capu `>^.^<`.
+iabbrev ssig ---<cr>Saludos, Capu `>^.^<`.
 iabbrev :sparkle: ✨
 iabbrev :upsidedown: 🙃
 iabbrev :catsmile: 😺
@@ -246,10 +242,10 @@ iabbrev :think: 🤔
 iabbrev :shrug: ¯\\_(ツ)_/¯
 iabbrev :wink: 😉
 
-iabbrev dsc describe('', () => {});<esc>2F'a
-iabbrev tst test('', async() => {});<esc>2F'a
-iabbrev itt it('', async() => {});<esc>2F'a
-iabbrev bfa beforeAll(async() => {});<esc>F{a
+iabbrev dsc describe("", () => {});<esc>2F"a
+iabbrev tst test("", async() => {});<esc>2F"a
+iabbrev itt it("", async() => {});<esc>2F"a
+iabbrev bfe beforeEach(async() => {});<esc>F{a
 iabbrev bff before(async() => {});<esc>F{a
 
 "Source a project-specific vimrc, if it exists
