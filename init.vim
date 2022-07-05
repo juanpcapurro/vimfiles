@@ -1,30 +1,4 @@
-"Capurro's minimal vimrc
-" Load vim-plug
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
-    execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
-
-call plug#begin('~/.config/nvim/plugged_minimal')
-" Heavy-esque plugins
-Plug 'junegunn/fzf.vim'
-Plug 'pbogut/fzf-mru.vim'
-" Simple plugins
-Plug 'sheerun/vim-polyglot'
-Plug 'vim-scripts/BufOnly.vim'
-" Beautifully simple plugins
-Plug 'jeetsukumaran/vim-indentwise'
-Plug 'milkypostman/vim-togglelist'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-vinegar'
-Plug 'junegunn/vim-easy-align'
-" Visual plugins
-Plug 'liuchengxu/space-vim-theme'
-call plug#end()
+"Capu's minimal vimrc
 
 so /usr/share/doc/fzf/examples/fzf.vim
 
@@ -125,7 +99,6 @@ nnoremap <leader>yF :let @* = expand("%:p")<cr>
 map <leader>* *:%s///gn<CR>
 nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ez :e ~/.zshrc<cr>
 nnoremap <leader>eZ :e ~/.zshenv<cr>
 nnoremap <leader>er :e ~/.config/newsboat/urls<CR>
@@ -221,6 +194,17 @@ augroup tweetcommands
   autocmd!
   autocmd BufEnter tweetlater.md setlocal textwidth=280
   autocmd BufEnter tweetlater.md setlocal colorcolumn=280
+augroup END
+
+"specific commands by filetype
+augroup javascriptcommands
+    autocmd!
+    autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
+augroup END
+
+augroup typescript
+    autocmd!
+    autocmd BufEnter *.ts nnoremap <buffer> <C-]> :ALEGoToDefinition<cr>
 augroup END
 
 augroup othercfgs

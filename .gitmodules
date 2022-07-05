@@ -1,0 +1,69 @@
+[submodule "pack/git-plugins/opt/ale"]
+	path = pack/git-plugins/opt/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "pack/git-plugins/opt/vim-airline"]
+	path = pack/git-plugins/opt/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "pack/git-plugins/opt/vim-airline-themes"]
+	path = pack/git-plugins/opt/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "pack/git-plugins/opt/vim-gitgutter"]
+	path = pack/git-plugins/opt/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "pack/git-plugins/start/auto-pairs"]
+	path = pack/git-plugins/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "pack/git-plugins/start/BufOnly.vim"]
+	path = pack/git-plugins/start/BufOnly.vim
+	url = https://github.com/vim-scripts/BufOnly.vim.git
+[submodule "pack/git-plugins/start/fzf-mru.vim"]
+	path = pack/git-plugins/start/fzf-mru.vim
+	url = https://github.com/pbogut/fzf-mru.vim.git
+[submodule "pack/git-plugins/start/fzf.vim"]
+	path = pack/git-plugins/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "pack/git-plugins/start/MatchTagAlways"]
+	path = pack/git-plugins/start/MatchTagAlways
+	url = https://github.com/Valloric/MatchTagAlways.git
+[submodule "pack/git-plugins/start/space-vim-theme"]
+	path = pack/git-plugins/start/space-vim-theme
+	url = https://github.com/liuchengxu/space-vim-theme.git
+[submodule "pack/git-plugins/start/ultisnips"]
+	path = pack/git-plugins/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "pack/git-plugins/start/vim-commentary"]
+	path = pack/git-plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "pack/git-plugins/start/vim-easy-align"]
+	path = pack/git-plugins/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "pack/git-plugins/start/vim-fugitive"]
+	path = pack/git-plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/git-plugins/start/vim-gutentags"]
+	path = pack/git-plugins/start/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "pack/git-plugins/start/vim-indentwise"]
+	path = pack/git-plugins/start/vim-indentwise
+	url = https://github.com/jeetsukumaran/vim-indentwise.git
+[submodule "pack/git-plugins/start/vim-polyglot"]
+	path = pack/git-plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "pack/git-plugins/start/vim-repeat"]
+	path = pack/git-plugins/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "pack/git-plugins/start/vim-snippets"]
+	path = pack/git-plugins/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "pack/git-plugins/start/vim-surround"]
+	path = pack/git-plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "pack/git-plugins/start/vim-togglelist"]
+	path = pack/git-plugins/start/vim-togglelist
+	url = https://github.com/milkypostman/vim-togglelist.git
+[submodule "pack/git-plugins/start/vim-unimpaired"]
+	path = pack/git-plugins/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "pack/git-plugins/start/vim-vinegar"]
+	path = pack/git-plugins/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
