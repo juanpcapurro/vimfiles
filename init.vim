@@ -10,58 +10,41 @@ let g:netrw_liststyle = 3
 
 set wildignore+=*.class,.git,.hg,.svn,target,*.o,*.pdf,plugged,tags,*.make,node_modules,internals,abi
 "grepping
-set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.json'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
 set grepformat=%f:%l:%c:%m
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 colorscheme space_vim_theme
 
 set termguicolors
+let mapleader=";"
+let localleader=";"
 
-let mapleader = ";"
-let localleader = ";"
-set wrap lbr
+set wrap lbr cpoptions+=n
 set lazyredraw
-set relativenumber
-set number
-set numberwidth=1
-set foldmethod=indent
-set foldlevelstart=99
+set relativenumber number numberwidth=2
+set foldmethod=indent foldlevelstart=99
 set mouse=a
-set noswapfile
-set splitbelow
-set splitright
-set diffopt+=vertical
+set splitbelow splitright diffopt+=vertical
 syntax on 
 filetype indent on
 filetype plugin on 
 
+set scrolloff=2
+
 "autoloading: 
-set autoread
-set updatetime=7800
+set autoread updatetime=7800
 
 set wildmenu
-set incsearch
-set ignorecase
-set smartcase
-set hlsearch
+set incsearch ignorecase smartcase hlsearch
 set background=dark
-set cursorline
-set undofile
-set undodir=~/.config/nvim/undo_history
-set autowriteall
+set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
 
-set listchars=tab:>-,space:·
-set list
-set colorcolumn=100
+set listchars=tab:>-,space:· list colorcolumn=100 cursorline
 
 "Indenting
-set smartindent
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set smartindent expandtab shiftround shiftwidth=2 softtabstop=2 tabstop=2
 
 " MAPPINGS
 "spellcheck
@@ -72,10 +55,10 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 nnoremap gV `[v`]
-nnoremap <C-h> <C-w> h
-nnoremap <C-j> <C-w> j
-nnoremap <C-k> <C-w> k
-nnoremap <C-l> <C-w> l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
@@ -99,8 +82,8 @@ nnoremap <leader>yF :let @* = expand("%:p")<cr>
 map <leader>* *:%s///gn<CR>
 nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
-nnoremap <leader>ez :e ~/.zshrc<cr>
-nnoremap <leader>eZ :e ~/.zshenv<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sV :source ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>er :e ~/.config/newsboat/urls<CR>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
@@ -196,12 +179,6 @@ augroup tweetcommands
   autocmd BufEnter tweetlater.md setlocal colorcolumn=280
 augroup END
 
-"specific commands by filetype
-augroup javascriptcommands
-    autocmd!
-    autocmd BufEnter *.js,*.jsx setlocal foldmethod=syntax
-augroup END
-
 augroup typescript
     autocmd!
     autocmd BufEnter *.ts nnoremap <buffer> <C-]> :ALEGoToDefinition<cr>
@@ -226,11 +203,42 @@ iabbrev :think: 🤔
 iabbrev :shrug: ¯\\_(ツ)_/¯
 iabbrev :wink: 😉
 
-iabbrev dsc describe("", () => {});<esc>2F"a
-iabbrev tst test("", async() => {});<esc>2F"a
-iabbrev itt it("", async() => {});<esc>2F"a
-iabbrev bfe beforeEach(async() => {});<esc>F{a
-iabbrev bff before(async() => {});<esc>F{a
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
+
+"learn vimscript the hard way thingies
+inoremap <leader><c-u> <esc>viwUA
+nnoremap <leader><c-u> viwU
+vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
+
+onoremap il( :<c-u>normal! F(vi(<cr>
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap al( :<c-u>normal! F(va(<cr>
+onoremap an( :<c-u>normal! f)va(<cr>
+onoremap il{ :<c-u>normal! F}vi{<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap al{ :<c-u>normal! F{va{<cr>
+onoremap an{ :<c-u>normal! f}va{<cr>
+
+
+augroup filetype_html
+    autocmd!
+    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+augroup END
+
+augroup javascriptcommands
+    autocmd!
+    autocmd FileType javascript setlocal foldmethod=syntax
+    autocmd FileType javascript iabbrev <buffer> dsc describe("", () => {});<esc>2F"a
+    autocmd FileType javascript iabbrev <buffer> tst test("", async() => {});<esc>2F"a
+    autocmd FileType javascript iabbrev <buffer> itt it("", async() => {});<esc>2F"a
+    autocmd FileType javascript iabbrev <buffer> bfe beforeEach(async() => {});<esc>F{a
+    autocmd FileType javascript iabbrev <buffer> bff before(async() => {});<esc>F{a
+    autocmd FileType javascript iabbrev <buffer> describe NOPENOPENOPE
+    autocmd FileType javascript iabbrev <buffer> test( NOPENOPENOPE
+    autocmd FileType javascript iabbrev <buffer> it( NOPENOPENOPE
+    autocmd FileType javascript iabbrev <buffer> beforeEach NOPENOPENOPE
+    autocmd FileType javascript iabbrev <buffer> before( NOPENOPENOPE
+augroup END
+

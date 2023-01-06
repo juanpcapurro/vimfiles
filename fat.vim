@@ -53,8 +53,7 @@ let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sV :source ~/.config/nvim/fat.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>
 
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
