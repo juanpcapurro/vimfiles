@@ -152,7 +152,9 @@ command! -nargs=0 Ts call WriteTimestamp()
 
 augroup markdown
     autocmd!
-    autocmd BufEnter *.md nnoremap <buffer> <leader>t :Ts <cr>a
+    autocmd filetype markdown nnoremap <buffer> <leader>t :Ts <cr>a
+    autocmd filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rkvg_"<cr>
+    autocmd filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
 augroup END
 
 augroup plaintext
@@ -220,6 +222,8 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap al{ :<c-u>normal! F{va{<cr>
 onoremap an{ :<c-u>normal! f}va{<cr>
+
+onoremap in@ :<c-u>execute "normal! /\\<[[:alnum:]]\\{2,}@[[:alnum:]]\\{2,}\\.[[:alnum:]]\\{2,}\\>\r:nohlsearch\rvE"<cr>
 
 
 augroup filetype_html
