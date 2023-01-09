@@ -10,7 +10,7 @@ let g:netrw_liststyle = 3
 
 set wildignore+=*.class,.git,.hg,.svn,target,*.o,*.pdf,plugged,tags,*.make,node_modules,internals,abi
 "grepping
-set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.json'\ --ignore='*.min.*'\ --ignore='*.pyc'\ -S
+set grepprg=ag\ --vimgrep\ --silent\ --ignore='*.class'\ --ignore='*.csv'\ --ignore='*.min.*'\ --ignore='*.pyc'\ --ignore='.*json'\ --ignore='.*lock$'\ -S
 set grepformat=%f:%l:%c:%m
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
@@ -73,8 +73,6 @@ endfunction
 
 set isfname+=@-@
 
-set includeexpr=LoadMainNodeModule(v:fname)
-
 " Yank things into things
 nnoremap <leader>yf :let @* = expand("%")<cr>
 nnoremap <leader>yF :let @* = expand("%:p")<cr>
@@ -84,11 +82,13 @@ nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sV :source ~/.config/nvim/fat.vim<cr>
+nnoremap <leader>ef :e ~/.config/fish/config.fish<cr>
 nnoremap <leader>er :e ~/.config/newsboat/urls<CR>
 nnoremap <leader>ei :e ~/.config/i3/config<cr>
 nnoremap <leader>ep :e ~/.config/i3blocks/config<cr>
 nnoremap <leader>es :e ~/.ssh/config<cr>
 nnoremap <leader>eq :e ~/.config/qutebrowser/config.py<cr>
+nnoremap <leader>ea :e ~/.config/awesome/rc.lua<cr>
 nnoremap <leader>ex :e ~/.config/sxhkd/sxhkdrc<cr>
 nnoremap <leader>en :FZF! ~/notes <CR>
 nnoremap <leader>eN :e ~/notes/
@@ -143,7 +143,7 @@ function! OpenTimelog()
 endfunction
 " Insert a timestamp under the cursor
 function! WriteTimestamp()
-  execute "normal! o\<esc>0i" . strftime("%c") . "\n"
+  execute "normal! o\<esc>0i" . strftime("%F-%H-%M") . ": "
 endfunction
 
 command! -nargs=0 Lb call OpenLogbook()
@@ -230,15 +230,6 @@ augroup END
 augroup javascriptcommands
     autocmd!
     autocmd FileType javascript setlocal foldmethod=syntax
-    autocmd FileType javascript iabbrev <buffer> dsc describe("", () => {});<esc>2F"a
-    autocmd FileType javascript iabbrev <buffer> tst test("", async() => {});<esc>2F"a
-    autocmd FileType javascript iabbrev <buffer> itt it("", async() => {});<esc>2F"a
-    autocmd FileType javascript iabbrev <buffer> bfe beforeEach(async() => {});<esc>F{a
-    autocmd FileType javascript iabbrev <buffer> bff before(async() => {});<esc>F{a
-    autocmd FileType javascript iabbrev <buffer> describe NOPENOPENOPE
-    autocmd FileType javascript iabbrev <buffer> test( NOPENOPENOPE
-    autocmd FileType javascript iabbrev <buffer> it( NOPENOPENOPE
-    autocmd FileType javascript iabbrev <buffer> beforeEach NOPENOPENOPE
-    autocmd FileType javascript iabbrev <buffer> before( NOPENOPENOPE
+    autocmd FileType javascript setlocal includeexpr=LoadMainNodeModule(v:fname)
 augroup END
 
