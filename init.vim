@@ -41,6 +41,15 @@ set background=dark
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
 
+set statusline=%y "[filetype]
+set statusline+=%q\  "[quickfix] of [location]
+set statusline+=%.25f\  "truncated filename
+set statusline+=%r%m "[RO] for readonly [+] when file is modified
+set statusline+=%w "preview flag
+set statusline+=%= "define the right side
+set statusline+=%l:%c/%L\  "current line : column / total lines
+set statusline+=%B "hexadecimal value of character under cursor utf-8 aware
+
 set listchars=tab:>-,space:· list colorcolumn=100 cursorline
 
 "Indenting
@@ -193,6 +202,8 @@ augroup othercfgs
     " seconds
     autocmd CursorHold,CursorHoldI,FocusLost,FocusGained * silent! wa
     autocmd BufEnter Makefile setlocal tabstop=2 noexpandtab
+    "byte number in file, for those 'parsing error at position X' kind of days
+    autocmd Filetype json setlocal statusline+=(%o)
 augroup END
 
 iabbrev ssig ---<cr>Saludos, Capu `>^.^<`.
