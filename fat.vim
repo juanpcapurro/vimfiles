@@ -6,10 +6,9 @@ packadd vim-airline
 packadd vim-airline-themes
 packadd vim-gitgutter
 
-" UltiSnips
-let g:UltiSnipsEditSplit="vertical"
+nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>
 
-" ALE
+" ALE: {{{
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier_eslint', 'prettier', 'tsserver'],
 \   'typescript': ['eslint', 'tsserver'],
@@ -33,14 +32,18 @@ let g:ale_fixers = {
 \}
 let g:ale_set_loclist  = 0
 let g:ale_set_quickfix = 0
- 
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_filetype_changed = 1
 
-"Visual settings
+nnoremap ]a :ALENext<CR>
+nnoremap [a :ALEPrevious<CR>
+nnoremap =a :ALEFix<CR>
+" }}}
+
+" Airline: {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 let g:airline_theme='minimalist'
@@ -52,13 +55,11 @@ let g:airline_section_error = ''
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
+" }}}
 
-nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>
-
+" GitGutter {{{
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
 nnoremap =g :GitGutterUndoHunk<cr>
+" }}}
 
-nnoremap ]a :ALENext<CR>
-nnoremap [a :ALEPrevious<CR>
-nnoremap =a :ALEFix<CR>
