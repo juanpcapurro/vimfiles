@@ -189,6 +189,7 @@ augroup filetypes
   autocmd filetype vim setlocal foldlevelstart=0 foldmethod=marker
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
+  autocmd bufwrite *.snippets call UltiSnips#RefreshSnippets
 augroup END
 
 " }}}
