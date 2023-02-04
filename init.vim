@@ -45,14 +45,16 @@ syntax on
 set scrolloff=2
 set background=dark
 
-set statusline=%y "[filetype]
-set statusline+=%q\  "[quickfix] of [location]
-set statusline+=%.25f\  "truncated filename
-set statusline+=%r%m "[RO] for readonly [+] when file is modified
-set statusline+=%w "preview flag
-set statusline+=%= "define the right side
-set statusline+=%l:%c/%L\  "current line : column / total lines
-set statusline+=%B "hexadecimal value of character under cursor utf-8 aware
+augroup onlyOnInit " prevent further sourcings of this file from overriding vim-airline
+  autocmd VimEnter * set statusline=%y "[filetype]
+  autocmd VimEnter * set statusline+=%q\  "[quickfix] of [location]
+  autocmd VimEnter * set statusline+=%.25f\  "truncated filename
+  autocmd VimEnter * set statusline+=%r%m "[RO] for readonly [+] when file is modified
+  autocmd VimEnter * set statusline+=%w "preview flag
+  autocmd VimEnter * set statusline+=%= "define the right side
+  autocmd VimEnter * set statusline+=%l:%c/%L\  "current line : column / total lines
+  autocmd VimEnter * set statusline+=%B "hexadecimal value of character under cursor utf-8 aware
+augroup END
 
 set listchars=tab:>-,space:· list colorcolumn=100 cursorline
 " }}}
@@ -190,6 +192,11 @@ augroup filetypes
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
   autocmd bufwrite *.snippets call UltiSnips#RefreshSnippets
+augroup END
+
+augroup gui
+  autocmd!
+  autocmd UIEnter * source ~/.config/nvim/fat.vim
 augroup END
 
 " }}}
