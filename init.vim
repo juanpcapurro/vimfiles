@@ -190,9 +190,11 @@ augroup filetypes
   autocmd bufenter tweetlater.md setlocal colorcolumn=280
   autocmd filetype typescript nnoremap <buffer> <C-]> :ALEGoToDefinition<cr>
   autocmd filetype vim,lua setlocal foldlevelstart=0 foldmethod=marker
+  autocmd filetype solidity setlocal errorformat^=%E%*[^e]error[%n]:\ %m,%Z%*[^>]>\ %f:%l:%c:
+  autocmd filetype solidity setlocal makeprg=forge\ build
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
-  autocmd bufwrite *.snippets call UltiSnips#RefreshSnippets
+  autocmd bufwrite *.snippets call UltiSnips#RefreshSnippets()
 augroup END
 
 augroup gui
