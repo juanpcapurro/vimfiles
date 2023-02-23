@@ -41,6 +41,7 @@ let g:ale_lint_on_filetype_changed = 1
 nnoremap ]a :ALENext<CR>
 nnoremap [a :ALEPrevious<CR>
 nnoremap =a :ALEFix<CR>
+set omnifunc=ale#completion#OmniFunc
 " }}}
 
 " Airline: {{{

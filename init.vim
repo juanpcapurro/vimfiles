@@ -42,6 +42,7 @@ set relativenumber number numberwidth=2
 set mouse=a
 set splitbelow splitright diffopt+=vertical
 syntax on 
+set foldmethod=syntax
 set scrolloff=2
 set background=dark
 
@@ -188,7 +189,7 @@ augroup filetypes
   autocmd bufenter tweetlater.md setlocal textwidth=280
   autocmd bufenter tweetlater.md setlocal colorcolumn=280
   autocmd filetype typescript nnoremap <buffer> <C-]> :ALEGoToDefinition<cr>
-  autocmd filetype vim setlocal foldlevelstart=0 foldmethod=marker
+  autocmd filetype vim,lua setlocal foldlevelstart=0 foldmethod=marker
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
   autocmd bufwrite *.snippets call UltiSnips#RefreshSnippets
