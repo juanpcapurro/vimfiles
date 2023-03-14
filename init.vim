@@ -35,10 +35,8 @@ nnoremap <leader>gf :grep <cfile><cr>
 
 " Cosmetic & visualization things {{{
 colorscheme space_vim_theme
-set termguicolors
-set wrap lbr cpoptions+=n
+set wrap lbr relativenumber number numberwidth=2
 set lazyredraw
-set relativenumber number numberwidth=2
 set mouse=a
 set splitbelow splitright diffopt+=vertical
 syntax on 
@@ -194,7 +192,7 @@ augroup filetypes
   autocmd filetype solidity setlocal makeprg=forge\ build
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
-  autocmd bufwrite *.snippets call UltiSnips#RefreshSnippets()
+  autocmd bufwritepost *.snippets call UltiSnips#RefreshSnippets()
 augroup END
 
 augroup gui
