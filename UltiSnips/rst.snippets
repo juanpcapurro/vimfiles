@@ -18,3 +18,29 @@ ${1}
 $0
 endsnippet
 
+# TODO: trim the current filename so it can add the directory for the images automatically
+snippet ..im "image tag" b
+.. image:: {static}/${1}
+    :alt: ${2}
+endsnippet
+
+# TODO: be a reasonable person and use + register so it's portable
+snippet ..cc "code, copied from the clipboard" b
+.. code::
+
+    `xclip -selection clipboard -o`
+endsnippet
+
+snippet ..c "code" b
+.. code::
+
+    ${1:${VISUAL}}
+endsnippet
+
+snippet <e "external link"
+\`${1} <`xclip -selection clipboard -o`>\`_
+endsnippet
+
+snippet <i "internal link"
+\`${1} <{filename}/${2}>\`_
+endsnippet

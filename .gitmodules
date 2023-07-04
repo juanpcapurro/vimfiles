@@ -1,12 +1,6 @@
 [submodule "pack/git-plugins/opt/ale"]
 	path = pack/git-plugins/opt/ale
 	url = https://github.com/w0rp/ale.git
-[submodule "pack/git-plugins/opt/vim-airline"]
-	path = pack/git-plugins/opt/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule "pack/git-plugins/opt/vim-airline-themes"]
-	path = pack/git-plugins/opt/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "pack/git-plugins/opt/vim-gitgutter"]
 	path = pack/git-plugins/opt/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git

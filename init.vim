@@ -21,9 +21,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 set wildmenu
 set incsearch ignorecase smartcase hlsearch
 
-nnoremap <leader>t :Tags<cr>
+nnoremap <leader>T :Tags<cr>
 nnoremap <leader>p :Files<cr>
-nnoremap <leader>T :BTags<cr>
+nnoremap <leader>t :BTags<cr>
 nnoremap <leader>m :FZFMru<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>a :Ag<cr>
@@ -47,7 +47,7 @@ set background=dark
 augroup onlyOnInit " prevent further sourcings of this file from overriding vim-airline
   autocmd VimEnter * set statusline=%y "[filetype]
   autocmd VimEnter * set statusline+=%q\  "[quickfix] of [location]
-  autocmd VimEnter * set statusline+=%.25f\  "truncated filename
+  autocmd VimEnter * set statusline+=%.45f\  "truncated filename
   autocmd VimEnter * set statusline+=%r%m "[RO] for readonly [+] when file is modified
   autocmd VimEnter * set statusline+=%w "preview flag
   autocmd VimEnter * set statusline+=%= "define the right side
@@ -60,7 +60,8 @@ set listchars=tab:>-,space:· list colorcolumn=100 cursorline
 
 " Behaviour settings {{{
 filetype indent on
-filetype plugin on 
+filetype plugin on
+set foldlevelstart=99
 set autoread updatetime=7800
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
@@ -80,11 +81,15 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+nnoremap <leader>h <c-w>h
+nnoremap <leader>j <c-w>j
+nnoremap <leader>k <c-w>k
+nnoremap <leader>l <c-w>l
+nnoremap \ ;
 nnoremap gV `[v`]
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <leader>o :only<CR>
+nnoremap <leader>O :BufOnly<CR>
+nnoremap <leader><C-]> :only<CR> :vs<cr> <C-]>
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
@@ -93,15 +98,15 @@ inoremap jk <esc>
 " Yank things into things
 nnoremap <leader>yf :let @* = expand("%")<cr>
 nnoremap <leader>yF :let @* = expand("%:p")<cr>
-"make heading
-nnoremap <leader>hh yypVr
+"make section
+nnoremap <leader>s yypVr
 "evaluate as math
 nnoremap <leader>c yypV!bc -l<cr>
 " }}}
 
 " Mappings: text modification {{{
-xnoremap ga <Plug>(EasyAlign)
-nnoremap ga <Plug>(EasyAlign)
+xmap ga <plug>(EasyAlign)
+nmap ga <plug>(EasyAlign)
 nnoremap <leader>ww :w<cr>
 nnoremap <leader>wa :wa<cr>
 nnoremap <leader>wm :wa<cr>:make<cr>
@@ -180,8 +185,10 @@ augroup filetypes
   autocmd!
   autocmd filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rkvg_"<cr>
   autocmd filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
-  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=100
   autocmd filetype Makefile setlocal tabstop=2 noexpandtab
+  " useful for my java makefile setup, useless for the '''real world'''
+  autocmd filetype java let b:ale_java_javac_sourcepath="."
   autocmd filetype sent setlocal textwidth=45
   autocmd filetype sent setlocal colorcolumn=45
   autocmd bufenter tweetlater.md setlocal textwidth=280

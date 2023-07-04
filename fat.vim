@@ -2,8 +2,6 @@
 so ~/.config/nvim/init.vim
 
 packadd ale
-packadd vim-airline
-packadd vim-airline-themes
 packadd vim-gitgutter
 
 nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>
@@ -14,7 +12,7 @@ let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'typescriptreact': ['eslint'],
 \   'python': ['flake8'],
-\   'java': [],
+\   'java': ['javac'],
 \   'html': ['prettier'],
 \   'c': ['cpplint', 'cppcheck', 'gcc'],
 \   'solidity': ['solhint'],
@@ -44,21 +42,8 @@ nnoremap =a :ALEFix<CR>
 set omnifunc=ale#completion#OmniFunc
 " }}}
 
-" Airline: {{{
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
-let g:airline_theme='minimalist'
-let g:airline_section_b = ''
-let g:airline_section_y = ''
-let g:airline_section_x = ''
-let g:airline_section_warning = ''
-let g:airline_section_error = ''
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-" }}}
-
 " GitGutter {{{
+let g:gitgutter_map_keys = 0
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
 nnoremap =g :GitGutterUndoHunk<cr>
