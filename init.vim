@@ -61,7 +61,8 @@ set listchars=tab:>-,space:· list colorcolumn=100 cursorline
 " Behaviour settings {{{
 filetype indent on
 filetype plugin on
-set foldlevelstart=99
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set autoread updatetime=7800
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
@@ -232,6 +233,16 @@ onoremap al{ :<c-u>normal! F{va{<cr>
 onoremap an{ :<c-u>normal! f}va{<cr>
 onoremap in@ :<c-u>execute "normal! /\\<[[:alnum:]]\\{2,}@[[:alnum:]]\\{2,}\\.[[:alnum:]]\\{2,}\\>\r:nohlsearch\rvE"<cr>
 " }}}
+
+" Lua config for nvim-treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {enable = true},
+  highlight = {enable = true},
+  indent = {enable = true},
+}
+EOF
 
 "Source a project-specific vimrc, if it exists
 silent! so .vimlocal
