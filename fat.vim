@@ -42,7 +42,7 @@ nnoremap =a :ALEFix<CR>
 set omnifunc=ale#completion#OmniFunc
 " }}}
 
-" GitGutter {{{
+" GitGutter: {{{
 let g:gitgutter_map_keys = 0
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>

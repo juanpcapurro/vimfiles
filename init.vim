@@ -39,10 +39,9 @@ set wrap lbr relativenumber number numberwidth=2
 set lazyredraw
 set mouse=a
 set splitbelow splitright diffopt+=vertical
-syntax on 
-set foldmethod=syntax
-set scrolloff=2
+set scrolloff=3
 set background=dark
+set listchars=tab:>-,space:· list colorcolumn=80 cursorline
 
 augroup onlyOnInit " prevent further sourcings of this file from overriding vim-airline
   autocmd VimEnter * set statusline=%y "[filetype]
@@ -54,8 +53,6 @@ augroup onlyOnInit " prevent further sourcings of this file from overriding vim-
   autocmd VimEnter * set statusline+=%l:%c/%L\  "current line : column / total lines
   autocmd VimEnter * set statusline+=%B "hexadecimal value of character under cursor utf-8 aware
 augroup END
-
-set listchars=tab:>-,space:· list colorcolumn=100 cursorline
 " }}}
 
 " Behaviour settings {{{
@@ -186,7 +183,7 @@ augroup filetypes
   autocmd!
   autocmd filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rkvg_"<cr>
   autocmd filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
-  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=100
+  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 colorcolumn=80
   autocmd filetype Makefile setlocal tabstop=2 noexpandtab
   " useful for my java makefile setup, useless for the '''real world'''
   autocmd filetype java let b:ale_java_javac_sourcepath="."
