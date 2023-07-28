@@ -1,3 +1,11 @@
+snippet icl "Import console.log"
+import "forge-std/console.sol";
+endsnippet
+
+snippet cl "console.log"
+console.log(${0:${VISUAL}});
+endsnippet
+
 snippet mapp "mapping (from => to) visibility name;"
 mapping(${1} => ${2}) $0;
 endsnippet
@@ -24,6 +32,12 @@ snippet contf "// SPDX \n pragma solidity \n contract..."
 // SPDX-License-Identifier: GPL-3
 pragma solidity ^0.8.10;
 
+contract ${1} {
+    $0
+}
+endsnippet
+
+snippet con "contract definition"
 contract ${1} {
     $0
 }
