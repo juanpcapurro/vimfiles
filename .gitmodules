@@ -40,9 +40,6 @@
 [submodule "pack/git-plugins/start/vim-indentwise"]
 	path = pack/git-plugins/start/vim-indentwise
 	url = https://github.com/jeetsukumaran/vim-indentwise.git
-[submodule "pack/git-plugins/start/vim-polyglot"]
-	path = pack/git-plugins/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
 [submodule "pack/git-plugins/start/vim-repeat"]
 	path = pack/git-plugins/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -61,3 +58,9 @@
 [submodule "pack/git-plugins/start/vim-vinegar"]
 	path = pack/git-plugins/start/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule "pack/git-plugins/opt/nvim-treesitter"]
+	path = pack/git-plugins/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "pack/git-plugins/start/nvim-treesitter"]
+	path = pack/git-plugins/start/nvim-treesitter
+	url = git@github.com:nvim-treesitter/nvim-treesitter.git
