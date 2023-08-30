@@ -4,9 +4,6 @@ let localleader=";"
 
 " Config for plugins {{{
 so /usr/share/doc/fzf/examples/fzf.vim
-"vim-markdown by plasticboy (via polyglot)
-let g:vim_markdown_new_list_item_indent=0
-let g:vim_markdown_auto_insert_bullets=0
 " netrw file browsing
 let g:netrw_liststyle = 3
 let g:UltiSnipsEditSplit="vertical"
@@ -58,8 +55,7 @@ augroup END
 " Behaviour settings {{{
 filetype indent on
 filetype plugin on
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevelstart=99
 set autoread updatetime=7800
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
@@ -196,6 +192,7 @@ augroup filetypes
   autocmd filetype vim,lua setlocal foldlevelstart=0 foldmethod=marker
   autocmd filetype solidity setlocal errorformat^=%E%*[^e]error[%n]:\ %m,%Z%*[^>]>\ %f:%l:%c:
   autocmd filetype solidity setlocal makeprg=forge\ build
+  autocmd filetype solidity setlocal commentstring=//\ %s
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
   autocmd bufwritepost *.snippets call UltiSnips#RefreshSnippets()
