@@ -97,7 +97,8 @@ inoremap jk <esc>
 nnoremap <leader>yf :let @* = expand("%")<cr>
 nnoremap <leader>yF :let @* = expand("%:p")<cr>
 "make section
-nnoremap <leader>s yypVr
+nnoremap <leader>s yypVr-
+inoremap <C-s> <esc>yypVr-o
 "evaluate as math
 nnoremap <leader>c yypV!bc -l<cr>
 " }}}
@@ -113,8 +114,8 @@ nnoremap <leader>wm :wa<cr>:make<cr>
 " Mappings: opening various files {{{
 nnoremap <leader>eV :e ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-nnoremap <leader>sV :source ~/.config/nvim/fat.vim<cr>
+nnoremap <leader>Sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>SV :source ~/.config/nvim/fat.vim<cr>
 nnoremap <leader>ef :e ~/.config/fish/config.fish<cr>
 nnoremap <leader>er :e ~/.config/newsboat/urls<CR>
 nnoremap <leader>es :e ~/.ssh/config<cr>

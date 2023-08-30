@@ -4,7 +4,7 @@ so ~/.config/nvim/init.vim
 packadd ale
 packadd vim-gitgutter
 
-nnoremap <leader>sv :source ~/.config/nvim/fat.vim<cr>
+nnoremap <leader>Sv :source ~/.config/nvim/fat.vim<cr>
 
 " ALE: {{{
 let g:ale_linters = {
