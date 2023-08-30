@@ -90,8 +90,8 @@ nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 inoremap jk <esc>
 " Yank things into things
-nnoremap <leader>yf :let @* = expand("%")<cr>
-nnoremap <leader>yF :let @* = expand("%:p")<cr>
+nnoremap <leader>yf :let @* = expand("%") . ":" . line('.')<cr>
+nnoremap <leader>yF :let @* = expand("%:p") . ":" . line('.')<cr>
 "make section
 nnoremap <leader>s yypVr-
 inoremap <C-s> <esc>yypVr-o
