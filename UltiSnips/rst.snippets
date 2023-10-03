@@ -10,8 +10,9 @@ snippet post "blogpost start" b
 ${1}
 `!p snip.rv = display_width(t[1])*'#'`
 :date: `!v strftime("%Y-%m-%d")`
-:summary: ${2}
-:tags: ${3}
+:slug: ${2}
+:summary: ${3}
+:tags: ${4}
 :author: capu
 :featured_image:
 
@@ -26,19 +27,25 @@ endsnippet
 
 # TODO: be a reasonable person and use + register so it's portable
 snippet ..cc "code, copied from the clipboard" b
-.. code::
+.. code-block:: ${1}
+    :linenos: inline
+    :hl_lines: ${2}
 
     `xclip -selection clipboard -o`
+
+${0}
 endsnippet
 
 snippet ..c "code" b
-.. code::
+.. code-block:: ${1}
+    :linenos: inline
+    :hl_lines: ${2}
 
-    ${1:${VISUAL}}
+    ${0:${VISUAL}}
 endsnippet
 
 snippet <e "external link"
-\`${1} <`xclip -selection clipboard -o`>\`_
+\`${1} <`xclip -selection clipboard -o`>\`_ ${0}
 endsnippet
 
 snippet <i "internal link"
