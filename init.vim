@@ -53,13 +53,13 @@ augroup END
 " }}}
 
 " Behaviour settings {{{
-filetype indent on
 filetype plugin on
 set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevelstart=99
 set autoread updatetime=7800
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
-set smartindent expandtab shiftround shiftwidth=2 softtabstop=2 tabstop=2
+set noautoindent nocindent nosmartindent
+set expandtab shiftround shiftwidth=2 softtabstop=2 tabstop=2
 augroup autosave
   autocmd!
   " If possible, save when losing/gaining focus and every updatetime seconds
@@ -233,7 +233,6 @@ onoremap in@ :<c-u>execute "normal! /\\<[[:alnum:]]\\{2,}@[[:alnum:]]\\{2,}\\.[[
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
-  highlight = {enable = true},
   highlight = {enable = true},
   indent = {enable = true},
 }
