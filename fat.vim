@@ -10,9 +10,11 @@ nnoremap <leader>Sv :source ~/.config/nvim/fat.vim<cr>
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier_eslint', 'prettier', 'tsserver'],
 \   'typescript': ['eslint', 'tsserver'],
+\   'rst': ['rstcheck'],
 \   'typescriptreact': ['eslint'],
 \   'python': ['flake8'],
 \   'java': ['javac'],
+\   'rust': ['cargo', 'rust-analyzer'],
 \   'html': ['prettier'],
 \   'c': ['cpplint', 'cppcheck', 'gcc'],
 \   'solidity': ['solhint'],
@@ -25,6 +27,7 @@ let g:ale_fixers = {
 \   'scss': ['stylelint'],
 \   'typescript': ['eslint','tslint'],
 \   'html': ['prettier'],
+\   'rust': ['rustfmt'],
 \   'typescriptreact': ['eslint'],
 \   'javascript': ['eslint', 'prettier_eslint', 'prettier'],
 \}
