@@ -7,6 +7,13 @@ so /usr/share/doc/fzf/examples/fzf.vim
 " netrw file browsing
 let g:netrw_liststyle = 3
 let g:UltiSnipsEditSplit="vertical"
+
+let g:easy_align_delimiters = {
+\ '/': {
+\     'pattern':         '//\+\|/\*\|\*/',
+\     'delimiter_align': 'l',
+\  }
+\ }
 " }}}
 
 " Finding and listing stuff {{{
@@ -195,6 +202,7 @@ augroup filetypes
   autocmd filetype solidity setlocal commentstring=//\ %s
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
+  autocmd filetype rust setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd bufwritepost *.snippets call UltiSnips#RefreshSnippets()
 augroup END
 

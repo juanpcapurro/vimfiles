@@ -32,8 +32,20 @@ before(async function() {
 });
 endsnippet
 
+snippet befa "before(function() { ... })" b
+before(async function() {
+	${0:${VISUAL}}
+});
+endsnippet
+
 snippet befe "beforeEach(function() { ... })" b
-beforeEach(async function() {
+beforeEach(function() {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet befea "beforeEach(function() { ... })" b
+beforeEach(function() {
 	${0:${VISUAL}}
 });
 endsnippet

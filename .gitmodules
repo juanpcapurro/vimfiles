@@ -64,3 +64,6 @@
 [submodule "pack/git-plugins/start/nvim-treesitter"]
 	path = pack/git-plugins/start/nvim-treesitter
 	url = git@github.com:nvim-treesitter/nvim-treesitter.git
+[submodule "pack/git-plugins/opt/nvim-lspconfig"]
+	path = pack/git-plugins/opt/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
