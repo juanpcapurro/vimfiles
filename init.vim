@@ -47,7 +47,7 @@ set scrolloff=3
 set background=dark
 set listchars=tab:>-,space:· list colorcolumn=80 cursorline
 
-augroup onlyOnInit " prevent further sourcings of this file from overriding vim-airline
+augroup onlyOnInit 
   autocmd VimEnter * set statusline=%y "[filetype]
   autocmd VimEnter * set statusline+=%q\  "[quickfix] of [location]
   autocmd VimEnter * set statusline+=%.45f\  "truncated filename
@@ -61,11 +61,14 @@ augroup END
 
 " Behaviour settings {{{
 filetype plugin on
-set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevelstart=99
+" resolve require-style thingies
+set suffixesadd+=.js,.jsx,.sol
+set foldmethod=indent foldlevelstart=99
 set autoread updatetime=7800
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
 set noautoindent nocindent nosmartindent
+set path+=**
 set expandtab shiftround shiftwidth=2 softtabstop=2 tabstop=2
 augroup autosave
   autocmd!
@@ -99,9 +102,6 @@ inoremap jk <esc>
 " Yank things into things
 nnoremap <leader>yf :let @* = expand("%") . ":" . line('.')<cr>
 nnoremap <leader>yF :let @* = expand("%:p") . ":" . line('.')<cr>
-"make section
-nnoremap <leader>s yypVr-
-inoremap <C-s> <esc>yypVr-o
 "evaluate as math
 nnoremap <leader>c yypV!bc -l<cr>
 " }}}
@@ -127,8 +127,6 @@ nnoremap <leader>ea :e ~/.config/awesome/rc.lua<cr>
 nnoremap <leader>ex :e ~/.config/sxhkd/sxhkdrc<cr>
 nnoremap <leader>en :FZF! ~/notes <CR>
 nnoremap <leader>eN :e ~/notes/
-nnoremap <leader>et :FZF! ~/todos <CR>
-nnoremap <leader>eT :e ~/todos/
 " }}}
 
 " Ad-hoc-features: {{{
@@ -166,20 +164,6 @@ augroup journaling
 augroup  END
 " }}}
 
-" Navigate to npm dependencies on gf {{{
-" resolve files inside node_modules
-set suffixesadd+=.js,.jsx,.sol
-function! LoadMainNodeModule(fname)
-  return "./node_modules/" . a:fname
-endfunction
-set isfname+=@-@
-
-augroup manIHateJs
-    autocmd!
-    autocmd FileType javascript,typescript setlocal includeexpr=LoadMainNodeModule(v:fname)
-augroup END
-" }}}
-
 " }}}
 
 " Filetype specific autocommands {{{
@@ -187,7 +171,7 @@ augroup filetypes
   autocmd!
   autocmd filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rkvg_"<cr>
   autocmd filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
-  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 colorcolumn=80
+  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 colorcolumn=80 autoindent
   autocmd filetype Makefile setlocal tabstop=2 noexpandtab
   " useful for my java makefile setup, useless for the '''real world'''
   autocmd filetype java let b:ale_java_javac_sourcepath="."
@@ -200,9 +184,10 @@ augroup filetypes
   autocmd filetype solidity setlocal errorformat^=%E%*[^e]error[%n]:\ %m,%Z%*[^>]>\ %f:%l:%c:
   autocmd filetype solidity setlocal makeprg=forge\ build
   autocmd filetype solidity setlocal commentstring=//\ %s
+  autocmd filetype rust,javascrypt,typescript,python setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
-  autocmd filetype rust setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd filetype rust,solidity setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd bufwritepost *.snippets call UltiSnips#RefreshSnippets()
 augroup END
 
@@ -240,6 +225,7 @@ onoremap in@ :<c-u>execute "normal! /\\<[[:alnum:]]\\{2,}@[[:alnum:]]\\{2,}\\.[[
 " Lua config for nvim-treesitter
 lua << EOF
 require'nvim-treesitter.configs'.setup {
+  incremental_selection = { enable = true },
   ensure_installed = "all",
   highlight = {enable = true},
   indent = {enable = true},
