@@ -5,6 +5,25 @@ global !p
 from vimsnippets import display_width
 endglobal
 
+snippet = "double ### heading" b
+`!p snip.rv = display_width(t[1])*'#'`
+${:VISUAL1}
+`!p snip.rv = display_width(t[1])*'#'`
+${0}
+endsnippet
+
+snippet = "==== heading" b
+${1:${VISUAL}}
+`!p snip.rv = display_width(t[1])*'='`
+${0}
+endsnippet
+
+snippet = "---- heading" b
+${1:${VISUAL}}
+`!p snip.rv = display_width(t[1])*'-'`
+${0}
+endsnippet
+
 snippet post "blogpost start" b
 `!p snip.rv = display_width(t[1])*'#'`
 ${1}

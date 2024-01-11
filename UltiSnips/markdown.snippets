@@ -1,3 +1,7 @@
+global !p
+from vimsnippets import display_width
+endglobal
+
 snippet daylog "template for a day in my logbook" b
 TODO
 ====
@@ -7,6 +11,21 @@ logs
 ====
 `!v strftime("%F-%H-%M")`: ${1} 
 
+scratchpad
+==========
+
 forks
 =====
+endsnippet
+
+snippet = "==== heading" b
+${1:${VISUAL}}
+`!p snip.rv = display_width(t[1])*'='`
+${0}
+endsnippet
+
+snippet - "---- heading" b
+${1:${VISUAL}}
+`!p snip.rv = display_width(t[1])*'-'`
+${0}
 endsnippet
