@@ -179,7 +179,6 @@ augroup filetypes
   autocmd filetype sent setlocal colorcolumn=45
   autocmd bufenter tweetlater.md setlocal textwidth=280
   autocmd bufenter tweetlater.md setlocal colorcolumn=280
-  autocmd filetype typescript nnoremap <buffer> <C-]> :ALEGoToDefinition<cr>
   autocmd filetype vim,lua setlocal foldlevelstart=0 foldmethod=marker
   autocmd filetype solidity setlocal errorformat^=%E%*[^e]error[%n]:\ %m,%Z%*[^>]>\ %f:%l:%c:
   autocmd filetype solidity setlocal makeprg=forge\ build
