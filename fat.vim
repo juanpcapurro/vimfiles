@@ -31,7 +31,7 @@ let g:ale_fixers = {
 \   'typescriptreact': ['eslint'],
 \   'javascript': ['eslint', 'prettier_eslint', 'prettier'],
 \}
-let g:ale_set_loclist  = 0
+let g:ale_set_loclist  = 1
 let g:ale_set_quickfix = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 0
@@ -39,8 +39,6 @@ let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_filetype_changed = 1
 
-nnoremap ]a :ALENext<CR>
-nnoremap [a :ALEPrevious<CR>
 nnoremap =a :ALEFix<CR>
 " }}}
 
@@ -49,6 +47,7 @@ let g:gitgutter_map_keys = 0
 nnoremap ]g :GitGutterNextHunk<cr>
 nnoremap [g :GitGutterPrevHunk<cr>
 nnoremap =g :GitGutterUndoHunk<cr>
+nnoremap =G :GitGutterStageHunk<cr>
 " }}}
 
 " {{{ LSP:
