@@ -5,9 +5,9 @@ global !p
 from vimsnippets import display_width
 endglobal
 
-snippet = "double ### heading" b
+snippet == "double ### heading" b
 `!p snip.rv = display_width(t[1])*'#'`
-${:VISUAL1}
+${1:${VISUAL}}
 `!p snip.rv = display_width(t[1])*'#'`
 ${0}
 endsnippet
@@ -18,7 +18,7 @@ ${1:${VISUAL}}
 ${0}
 endsnippet
 
-snippet = "---- heading" b
+snippet - "---- heading" b
 ${1:${VISUAL}}
 `!p snip.rv = display_width(t[1])*'-'`
 ${0}

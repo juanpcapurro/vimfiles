@@ -18,6 +18,7 @@ let g:ale_linters = {
 \   'html': ['prettier'],
 \   'c': ['cpplint', 'cppcheck', 'gcc'],
 \   'solidity': ['solhint'],
+\   'rst': ['cspell'],
 \   'cpp': ['cpplint', 'cppcheck', 'gcc']
 \}
 let g:ale_fixers = {
@@ -26,7 +27,8 @@ let g:ale_fixers = {
 \   'solidity': ['prettier'],
 \   'scss': ['stylelint'],
 \   'typescript': ['eslint','tslint'],
-\   'html': ['prettier'],
+\   'html': ['prettier', 'tidy'],
+\   'c': ['clang-format'],
 \   'rust': ['rustfmt'],
 \   'typescriptreact': ['eslint'],
 \   'javascript': ['eslint', 'prettier_eslint', 'prettier'],

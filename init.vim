@@ -63,7 +63,7 @@ augroup END
 filetype plugin on
 " resolve require-style thingies
 set suffixesadd+=.js,.jsx,.sol
-set foldmethod=indent foldlevelstart=99
+set foldlevelstart=99
 set autoread updatetime=7800
 set undofile undodir=~/.config/nvim/undo_history autowriteall noswapfile
 set clipboard=unnamed
@@ -75,6 +75,8 @@ augroup autosave
   " If possible, save when losing/gaining focus and every updatetime seconds
   autocmd CursorHold,CursorHoldI,FocusLost,FocusGained * silent! wa
 augroup END
+
+set foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 " }}}
 
 " Mappings: do-this-thing style {{{
@@ -100,8 +102,8 @@ nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 inoremap jk <esc>
 " Yank things into things
-nnoremap <leader>yf :let @* = expand("%") . ":" . line('.')<cr>
-nnoremap <leader>yF :let @* = expand("%:p") . ":" . line('.')<cr>
+nnoremap <leader>yf :let @+ = expand("%") . ":" . line('.')<cr>
+nnoremap <leader>yF :let @+ = expand("%:p") . ":" . line('.')<cr>
 "evaluate as math
 nnoremap <leader>c yypV!bc -l<cr>
 " }}}
@@ -169,9 +171,7 @@ augroup  END
 " Filetype specific autocommands {{{
 augroup filetypes
   autocmd!
-  autocmd filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rkvg_"<cr>
-  autocmd filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^[-=]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
-  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 colorcolumn=80 autoindent
+  autocmd filetype rst,email,markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=80 colorcolumn=80
   autocmd filetype Makefile setlocal tabstop=2 noexpandtab
   " useful for my java makefile setup, useless for the '''real world'''
   autocmd filetype java let b:ale_java_javac_sourcepath="."
@@ -180,13 +180,11 @@ augroup filetypes
   autocmd bufenter tweetlater.md setlocal textwidth=280
   autocmd bufenter tweetlater.md setlocal colorcolumn=280
   autocmd filetype vim,lua setlocal foldlevelstart=0 foldmethod=marker
-  autocmd filetype solidity setlocal errorformat^=%E%*[^e]error[%n]:\ %m,%Z%*[^>]>\ %f:%l:%c:
-  autocmd filetype solidity setlocal makeprg=forge\ build
-  autocmd filetype solidity setlocal commentstring=//\ %s
-  autocmd filetype rust,javascrypt,typescript,python setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
+  autocmd filetype solidity setlocal errorformat^=%E%*[^e]error[%n]:\ %m,%Z%*[^>]>\ %f:%l:%c: makeprg=forge\ build
+  autocmd filetype solidity setlocal commentstring=//\ %s foldmethod=indent
   "byte number in file, for those 'parsing error at position X' kind of days
   autocmd filetype json setlocal statusline+=(%o)
-  autocmd filetype rust,solidity setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd filetype rust,solidity,c,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd bufwritepost *.snippets call UltiSnips#RefreshSnippets()
 augroup END
 
